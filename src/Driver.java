@@ -1,12 +1,12 @@
 public class Driver {
-    Car Car;
+    Car aCar;
     Coordinates coordinates;
     double balance=0;
     String name;
 
     public Driver(Car car, Coordinates coordinates, String name) {
-        Car = car;
-        coordinates = coordinates;
+        this.aCar = car;
+        this.coordinates = coordinates;
         this.name = name;
     }
 

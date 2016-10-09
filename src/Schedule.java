@@ -3,7 +3,7 @@ import org.joda.time.format.DateTimeFormat;
 
 public class Schedule {
     org.joda.time.LocalTime[] workWeek = new org.joda.time.LocalTime[7];
-    public void setHoursPerDayHours (String horasTrabajo, String dayOfTheWeek){
+    public void setHoursPerDay (String horasTrabajo, String dayOfTheWeek){
         int i=0;
         switch (dayOfTheWeek){
             case "monday":i=0;

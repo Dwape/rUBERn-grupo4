@@ -13,7 +13,7 @@ public class MainSystem {
     }
 
     public void Transaction(Client aClient, Driver aDriver, Coordinates startCoords, Coordinates finishCoords, Invoice anInvoice){
-        double cost = getCost(startCoords, finishCoords);
+        double cost = getCost(startCoords, finishCoords)*0.01;
         double uberBalance = cost*0.10;
         double driverBalance = cost*0.90;
         double clientBalance = cost*(-1);

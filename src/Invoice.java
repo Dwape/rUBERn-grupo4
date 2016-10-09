@@ -40,6 +40,7 @@ public class Invoice {
             System.out.println(numerosDeTarjeta.get(i));
             System.out.println(descripciones.get(i));
             System.out.println(montos.get(i));
+            System.out.println("\n"+"***********************************************************"+"\n");
         }
     }
 }
