@@ -39,6 +39,6 @@ public class MainSystem {
     }
 
     public double getCost(Coordinates startCoords, Coordinates finishCoords){
-        return Math.sqrt((finishCoords.getValueX - startCoords.getValueX)+(finishCoords.getValueY - startCoords.getValueY));
+        return Math.sqrt((finishCoords.getValueX() - startCoords.getValueX())+(finishCoords.getValueY() - startCoords.getValueY()));
     }
 }
