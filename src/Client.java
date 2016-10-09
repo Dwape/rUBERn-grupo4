@@ -5,9 +5,9 @@ import Exceptions.InvalidAmountExc;
  */
 public class Client {
     private double balance;
-    private double creditCardNumber;
+    private long creditCardNumber;
 
-    public Client(double balance, double creditCardNumber) {
+    public Client(double balance, long creditCardNumber) {
         this.balance = balance;
         this.creditCardNumber = creditCardNumber;
     }
@@ -17,5 +17,16 @@ public class Client {
             balance+=amount;
         }else
             throw new InvalidAmountExc();
+    }
+
+    public void spend(double amount){
+        if (amount>0&&amount<=balance){
+            balance-=amount;
+        }else
+            throw new InvalidAmountExc();
+    }
+
+    public long getCreditCardNumber() {
+        return creditCardNumber;
     }
 }
