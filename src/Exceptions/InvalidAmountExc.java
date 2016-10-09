@@ -1,5 +1,4 @@
-/**
- * Created by Gianni on 10/9/2016.
- */
+package Exceptions;
+
 public class InvalidAmountExc extends RuntimeException {
 }
