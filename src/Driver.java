@@ -1,23 +1,36 @@
+import org.joda.time.DateTime;
+import org.joda.time.LocalTime;
+
 public class Driver {
     Car aCar;
     Coordinates coordinates; //el auto debería tener las coordenadas
     double balance=0;
     String name;
-    boolean online; //true durante su horario de trabajo
     boolean isTraveling;
+    Schedule schedule;
 
-    public Driver(Car car, Coordinates coordinates, String name) {
+    public Driver(Car car, Coordinates coordinates, String name, Schedule schedule) {
         this.aCar = car;
         this.coordinates = coordinates;
         this.name = name;
+        this.schedule=schedule;
     }
 
     public void arrived(Coordinates finishCoordinates){
         coordinates.setCoordinates(finishCoordinates.getValueX(),finishCoordinates.getValueY());
+        isTraveling=false;
     }
 
     public boolean requestDriver(){ //tiene que preguntarle al chofer si acepta o rechaza el viaje.
-        return true;
+        char result = Scanner.getChar(name + ", do you accept the request? (Y/N)");
+        switch (result){
+            case 'Y': return true;
+            case 'N': return false;
+            default:
+                System.out.println("Not a valid option");
+                requestDriver();
+                return false;
+        }
     }
 
     public Coordinates getCoordinates() {
@@ -29,7 +42,16 @@ public class Driver {
     }
 
     public boolean checkAvailability(){ //si esta disponible y durante su horario de trabajo
-        return online && !isTraveling;
+        if(!isTraveling) {
+            int now = DateTime.now().getMillisOfDay();
+            int dayOfTheWeek = DateTime.now().getDayOfWeek();
+
+            int[][] hoursHowrk = schedule.getWorkWeek();
+
+            return (hoursHowrk[dayOfTheWeek + 1][0] > now && hoursHowrk[dayOfTheWeek + 1][1] < now);
+        }else{
+            return false;
+        }
     }
 
     public Car getCar(){

@@ -1,9 +1,11 @@
 import Exceptions.InvalidDayOfTheWeekExc;
 import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.LocalTime;
 
 public class Schedule {
-    org.joda.time.LocalTime[] workWeek = new org.joda.time.LocalTime[7];
-    public void setHoursPerDay (String horasTrabajo, String dayOfTheWeek){
+    int[][] workWeek = new int[7][2];
+    public void setHoursPerDay (String horasTrabajoInicia, String horasTrabajoFin, String dayOfTheWeek){
         int i=0;
         switch (dayOfTheWeek){
             case "monday":i=0;
@@ -23,8 +25,15 @@ public class Schedule {
             default: throw new InvalidDayOfTheWeekExc();
 
         }
-        org.joda.time.format.DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
-        org.joda.time.LocalTime dt = formatter.parseLocalTime(horasTrabajo);
-        workWeek[i]=dt;
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("HH:mm");
+        LocalTime inicioTrabajo = formatter.parseLocalTime(horasTrabajoInicia);
+        LocalTime finTrabajo = formatter.parseLocalTime(horasTrabajoFin);
+
+        workWeek[i][0]=inicioTrabajo.getMillisOfDay();
+        workWeek[i][1]=finTrabajo.getMillisOfDay();
+    }
+
+    public int[][] getWorkWeek() {
+        return workWeek;
     }
 }
