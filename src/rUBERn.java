@@ -62,7 +62,7 @@ public class rUBERn {
             case 1:
                 long x = Scanner.getLong("Enter your X coordinates: ");
                 long y = Scanner.getLong("Enter your Y coordinates: ");
-                Coordinates initCoordinates = new Coordinates();
+                Coordinates initCoordinates = new Coordinates(x,y);
                 break;
             case 2:
 
