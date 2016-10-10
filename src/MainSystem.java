@@ -71,7 +71,7 @@ public class MainSystem {
         int i3=0;
         while (i3<candidates.size()){
             Driver bestCandidate = getClosestDriver(candidates, startCoordinates);
-            if (bestCandidate.requestDriver() && candidates.contains(bestCandidate)){
+            if (bestCandidate.requestDriver()){
                 i3++;
                 return bestCandidate;
             }else{

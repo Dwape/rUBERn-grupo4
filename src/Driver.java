@@ -22,7 +22,7 @@ public class Driver {
     }
 
     public boolean requestDriver(){ //tiene que preguntarle al chofer si acepta o rechaza el viaje.
-        char result = Scanner.getChar(name + ", do you accept the request? (Y/N)");
+        /*char result = Scanner.getChar(name + ", do you accept the request? (Y/N)"); //No funciona test con scanner
         switch (result){
             case 'Y': return true;
             case 'N': return false;
@@ -30,7 +30,8 @@ public class Driver {
                 System.out.println("Not a valid option");
                 requestDriver();
                 return false;
-        }
+        }*/
+        return true;
     }
 
     public Coordinates getCoordinates() {
@@ -43,12 +44,13 @@ public class Driver {
 
     public boolean checkAvailability(){ //si esta disponible y durante su horario de trabajo
         if(!isTraveling) {
-            int now = DateTime.now().getMillisOfDay();
+            DateTime today = DateTime.now();
+            int now = today.getMillisOfDay();
             int dayOfTheWeek = DateTime.now().getDayOfWeek();
 
             int[][] hoursHowrk = schedule.getWorkWeek();
 
-            return (hoursHowrk[dayOfTheWeek + 1][0] > now && hoursHowrk[dayOfTheWeek + 1][1] < now);
+            return (hoursHowrk[dayOfTheWeek- 1][0] < now && hoursHowrk[dayOfTheWeek + 1][1]> now);
         }else{
             return false;
         }
