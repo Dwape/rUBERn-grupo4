@@ -6,6 +6,7 @@ import Exceptions.InvalidAmountExc;
 public class Client {
     private double balance;
     private long creditCardNumber;
+    boolean isTraveling;
 
     public Client(double balance, long creditCardNumber) {
         this.balance = balance;
@@ -28,5 +29,9 @@ public class Client {
 
     public long getCreditCardNumber() {
         return creditCardNumber;
+    }
+
+    public boolean getStatus(){
+        return isTraveling;
     }
 }

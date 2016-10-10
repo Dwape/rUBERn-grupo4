@@ -1,8 +1,10 @@
 public class Driver {
     Car aCar;
-    Coordinates coordinates;
+    Coordinates coordinates; //el auto debería tener las coordenadas
     double balance=0;
     String name;
+    boolean online; //true durante su horario de trabajo
+    boolean isTraveling;
 
     public Driver(Car car, Coordinates coordinates, String name) {
         this.aCar = car;
@@ -14,11 +16,23 @@ public class Driver {
         coordinates.setCoordinates(finishCoordinates.getValueX(),finishCoordinates.getValueY());
     }
 
+    public boolean requestDriver(){ //tiene que preguntarle al chofer si acepta o rechaza el viaje.
+        return true;
+    }
+
     public Coordinates getCoordinates() {
         return coordinates;
     }
 
     public void addFunds(double amount){
         balance+=amount;
+    }
+
+    public boolean checkAvailability(){ //si esta disponible y durante su horario de trabajo
+        return online && !isTraveling;
+    }
+
+    public Car getCar(){
+        return aCar;
     }
 }
