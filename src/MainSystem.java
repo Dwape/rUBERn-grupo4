@@ -13,6 +13,10 @@ public class MainSystem {
         driverList = new ArrayList<>();
     }
 
+    public void addDriver(Driver newDriver){
+        driverList.add(newDriver);
+    }
+
     public void Transaction(Client aClient, Driver aDriver, Coordinates startCoords, Coordinates finishCoords, Invoice anInvoice){
         double cost = getDistance(startCoords, finishCoords)*0.01;
         double uberBalance = cost*0.10;
@@ -48,22 +52,29 @@ public class MainSystem {
         for (int i=0; i<driverList.size(); i++){
             candidates.add(driverList.get(i));
         }
-        int numberOfCandidates = candidates.size();
-        for (int i=0; i<numberOfCandidates; i++){
-            if (candidates.get(i).getCar().getSpace() < numberOfPeople){
-                candidates.remove(i);
+        int i1=0;
+        while (i1<candidates.size()){
+            if (candidates.get(i1).getCar().getSpace() < numberOfPeople){
+                candidates.remove(i1);
+            }else{
+                i1++;
             }
         }
-        for (int i=0; i<numberOfCandidates; i++){
-            if (!candidates.get(i).checkAvailability()){
-                candidates.remove(i);
+        int i2=0;
+        while (i2<candidates.size()){
+            if (!candidates.get(i2).checkAvailability()){
+                candidates.remove(i2);
+            }else{
+                i2++;
             }
         }
-        for (int i=0; i<numberOfCandidates; i++){
+        int i3=0;
+        while (i3<candidates.size()){
             Driver bestCandidate = getClosestDriver(candidates, startCoordinates);
             if (bestCandidate.requestDriver() && candidates.contains(bestCandidate)){
+                i3++;
                 return bestCandidate;
-            } else{
+            }else{
                 candidates.remove(bestCandidate);
             }
         }
