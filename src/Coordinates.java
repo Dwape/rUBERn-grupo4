@@ -1,6 +1,12 @@
 public class Coordinates {
+
     long valueX;
     long valueY;
+
+    public Coordinates(long ValueX, long ValueY){
+        this.valueX = ValueX;
+        this.valueY = ValueY;
+    }
 
     public void setCoordinates(long newValueX, long newValueY){
         valueX=newValueX;

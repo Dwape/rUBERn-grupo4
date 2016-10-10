@@ -48,19 +48,19 @@ public class MainSystem {
         for (int i=0; i<driverList.size(); i++){
             candidates.add(driverList.get(i));
         }
-        for (int i=0; i<candidates.size(); i++){
+        int numberOfCandidates = candidates.size();
+        for (int i=0; i<numberOfCandidates; i++){
             if (candidates.get(i).getCar().getSpace() < numberOfPeople){
                 candidates.remove(i);
             }
         }
-        for (int i=0; i<candidates.size(); i++){
+        for (int i=0; i<numberOfCandidates; i++){
             if (!candidates.get(i).checkAvailability()){
                 candidates.remove(i);
             }
         }
-        int numberOfCandidates = candidates.size();
         for (int i=0; i<numberOfCandidates; i++){
-            Driver bestCandidate = calculateDistance(candidates, startCoordinates);
+            Driver bestCandidate = getClosestDriver(candidates, startCoordinates);
             if (bestCandidate.requestDriver() && candidates.contains(bestCandidate)){
                 return bestCandidate;
             } else{
@@ -70,16 +70,12 @@ public class MainSystem {
         throw new NoAvailableDriverExc();
     }
 
-    public Driver calculateDistance(ArrayList<Driver> candidates, Coordinates startCoordinates){
+    private Driver getClosestDriver(ArrayList<Driver> candidates, Coordinates startCoordinates){
         double distance = 0;
         Driver closestDriver = candidates.get(0);
         for (int i=0; i< candidates.size(); i++){
             double currentDriversDistance;
-            long driverX = candidates.get(i).getCoordinates().getValueX();
-            long driverY = candidates.get(i).getCoordinates().getValueY();
-            long startX = startCoordinates.getValueX();
-            long startY = startCoordinates.getValueY();
-            currentDriversDistance = Math.sqrt(Math.pow(driverX-startX, 2) + Math.pow(driverY-startY, 2));
+            currentDriversDistance = getDistance(startCoordinates, candidates.get(i).getCoordinates());
             if (currentDriversDistance < distance){
                 closestDriver = candidates.get(i);
             }
