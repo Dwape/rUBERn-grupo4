@@ -46,9 +46,9 @@ public class Driver {
             int now = today.getMillisOfDay();
             int dayOfTheWeek = DateTime.now().getDayOfWeek();
 
-            int[][] hoursHowrk = schedule.getWorkWeek();
+            int[][] hoursWork = schedule.getWorkWeek();
 
-            return (hoursHowrk[dayOfTheWeek- 1][0] < now && hoursHowrk[dayOfTheWeek + 1][1]> now);
+            return (hoursWork[dayOfTheWeek- 1][0] < now && hoursWork[dayOfTheWeek - 1][1]> now);
         }else{
             return false;
         }

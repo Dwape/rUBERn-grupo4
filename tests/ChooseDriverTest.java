@@ -32,7 +32,7 @@ public class ChooseDriverTest {
         Schedule schedule2 = new Schedule();
         schedule2.setHoursPerDay("04:00", "22:00", "monday");
         schedule2.setHoursPerDay("04:00", "22:00", "tuesday");
-        schedule2.setHoursPerDay("04:00","10:00","wednesday");
+        schedule2.setHoursPerDay("04:00", "20:00", "wednesday");
         schedule2.setHoursPerDay("04:00", "22:00", "thursday");
         schedule2.setHoursPerDay("04:00", "22:00", "friday");
         schedule2.setHoursPerDay("04:00", "22:00", "saturday");
