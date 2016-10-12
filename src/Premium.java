@@ -1,3 +1,7 @@
 public class Premium implements Category{
-    double quality = 100;
+    double extraPercentageCost = 0;
+
+    public double getExtraPercentageCost() {
+        return extraPercentageCost;
+    }
 }

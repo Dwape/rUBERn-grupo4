@@ -70,7 +70,7 @@ public class MainSystem {
         }
         int i3=0;
         while (i3<candidates.size()){
-            Driver bestCandidate = getClosestDriver(candidates, startCoordinates);
+            Driver bestCandidate = getLowestAdCost(candidates, startCoordinates);
             if (bestCandidate.requestDriver()){
                 i3++;
                 return bestCandidate;
@@ -82,15 +82,32 @@ public class MainSystem {
     }
 
     private Driver getClosestDriver(ArrayList<Driver> candidates, Coordinates startCoordinates){
-        double distance = 0;
+        double distance = getDistance(startCoordinates, candidates.get(0).getCoordinates());
         Driver closestDriver = candidates.get(0);
-        for (int i=0; i< candidates.size(); i++){
+        for (int i=1; i< candidates.size(); i++){
             double currentDriversDistance;
             currentDriversDistance = getDistance(startCoordinates, candidates.get(i).getCoordinates());
             if (currentDriversDistance < distance){
                 closestDriver = candidates.get(i);
+                distance = currentDriversDistance;
             }
         }
         return closestDriver;
+    }
+
+    private Driver getLowestAdCost(ArrayList<Driver> candidates, Coordinates startCoordinates){
+        double initDistanceCost = getDistance(startCoordinates, candidates.get(0).getCoordinates())*0.004;
+        double costAd = initDistanceCost+(initDistanceCost*(candidates.get(0).getCar().getaCategory().getExtraPercentageCost()*0.01));
+        Driver cheapestDriver = candidates.get(0);
+        for (int i=1; i< candidates.size(); i++){
+            double currentCostAd;
+            double distanceCost = getDistance(startCoordinates, candidates.get(i).getCoordinates())*0.004;
+            currentCostAd = distanceCost+(distanceCost*(candidates.get(i).getCar().getaCategory().getExtraPercentageCost()*0.01));
+            if (currentCostAd<costAd){
+                cheapestDriver = candidates.get(i);
+                costAd=currentCostAd;
+            }
+        }
+        return cheapestDriver;
     }
 }
