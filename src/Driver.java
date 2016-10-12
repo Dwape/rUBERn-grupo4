@@ -19,10 +19,10 @@ public class Driver {
         isTraveling=false;
     }
 
-    public boolean requestDriver(){ //tiene que preguntarle al chofer si acepta o rechaza el viaje.
+    public boolean requestDriver(){
         /*char result = Scanner.getChar(name + ", do you accept the request? (Y/N)"); //No funciona test con scanner
         switch (result){
-            case 'Y': return true;
+            case 'Y': return true; isTravelling = true;
             case 'N': return false;
             default:
                 System.out.println("Not a valid option");

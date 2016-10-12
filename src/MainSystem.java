@@ -43,6 +43,11 @@ public class MainSystem {
 
     }
 
+    public double calculateCost(Coordinates start, Coordinates finish){
+        double distance = getDistance(start, finish);
+        return 15 + 0.01*distance;
+    }
+
     public double getDistance(Coordinates startCoords, Coordinates finishCoords){
         return Math.sqrt((finishCoords.getValueX() - startCoords.getValueX())+(finishCoords.getValueY() - startCoords.getValueY()));
     }

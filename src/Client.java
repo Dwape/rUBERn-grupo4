@@ -34,4 +34,12 @@ public class Client {
     public boolean getStatus(){
         return isTraveling;
     }
+
+    public double getBalance(){
+        return balance;
+    }
+
+    public void changeStatus(){
+        isTraveling = !isTraveling;
+    }
 }

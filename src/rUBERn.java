@@ -3,7 +3,10 @@
  */
 public class rUBERn {
     public static void main(String[] args) {
+
         MainSystem rUBERnSystem = new MainSystem();
+
+        Invoice invoice = new Invoice();
 
         Basic basic = new Basic();
         Standard standard = new Standard();
@@ -22,10 +25,10 @@ public class rUBERn {
         rUBERnSystem.addDriver(driver1);
         rUBERnSystem.addDriver(driver2);
 
-        mainMenu();
+        mainMenu(rUBERnSystem, invoice);
     }
 
-    static public void mainMenu(){
+    static public void mainMenu(MainSystem rUBERnSystem, Invoice invoice){
         System.out.println("1.Driver Options");
         System.out.println("2.Client Options");
         System.out.println("3.Exit");
@@ -33,22 +36,23 @@ public class rUBERn {
 
         switch (option) {
             case 1:
-                driverMenu();
+                driverMenu(rUBERnSystem, invoice);
                 break;
             case 2:
-                clientMenu();
+                Client user = logIn();
+                clientMenu(user, rUBERnSystem, invoice);
                 break;
             case 3:
                 System.exit(0);
                 break;
             default:
                 System.out.println("Not a valid option");
-                mainMenu();
+                mainMenu(rUBERnSystem, invoice);
                 break;
         }
     }
 
-    static public void driverMenu(){
+    static public void driverMenu(MainSystem rUBERnSystem, Invoice invoice){
         System.out.println("1.");
         System.out.println("2.Terminar Viaje");
         System.out.println("3.Exit");
@@ -66,22 +70,41 @@ public class rUBERn {
                 break;
             default:
                 System.out.println("Not a valid option");
-                mainMenu();
+                mainMenu(rUBERnSystem, invoice);
                 break;
         }
     }
 
-    static public void clientMenu(){
+    static public void clientMenu(Client user, MainSystem rUBERnSystem, Invoice invoice){
         System.out.println("1.Call Driver");
-        System.out.println("2.");
+        System.out.println("2.Add Funds");
         System.out.println("3.Exit");
         int option = Scanner.getInt("Which option would you like to excecute: ");
 
         switch (option) {
             case 1:
-                long x = Scanner.getLong("Enter your X coordinates: ");
-                long y = Scanner.getLong("Enter your Y coordinates: ");
-                Coordinates initCoordinates = new Coordinates(x,y);
+                long StartX = Scanner.getLong("Enter current X coordinates: ");
+                long StartY = Scanner.getLong("Enter current Y coordinates: ");
+                Coordinates start = new Coordinates(StartX, StartY);
+
+                long FinishX = Scanner.getLong("Enter destiny's X coordinate: ");
+                long FinishY = Scanner.getLong("Enter destiny's Y coordinate: ");
+                Coordinates finish = new Coordinates(FinishX, FinishY);
+
+                int numberOfPeople = Scanner.getInt("How many people will travel?");
+
+                double price = rUBERnSystem.calculateCost(start, finish);
+                if (price > user.getBalance()){
+                    clientMenu(user, rUBERnSystem, invoice);
+                }
+                if (user.getStatus()){
+                    System.out.println("You are already travelling");
+                    clientMenu(user, rUBERnSystem, invoice);
+                }
+
+                Driver chosenDriver = rUBERnSystem.chooseDriver(start, finish, numberOfPeople);
+                user.changeStatus();
+
                 break;
             case 2:
 
@@ -91,8 +114,15 @@ public class rUBERn {
                 break;
             default:
                 System.out.println("Not a valid option");
-                mainMenu();
+                mainMenu(rUBERnSystem, invoice);
                 break;
         }
+    }
+
+    static public Client logIn(){
+        String name = Scanner.getString("Enter your name");
+        long creditCardNumber = Scanner.getLong("Enter your credit card number");
+        Client user = new Client(0, creditCardNumber);
+        return user;
     }
 }
