@@ -1,3 +1,7 @@
 public class Standard implements Category{
-    double quality = 50;
+    double extraPercentageCost = 10;
+
+    public double getExtraPercentageCost() {
+        return extraPercentageCost;
+    }
 }

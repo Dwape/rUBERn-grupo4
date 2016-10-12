@@ -18,4 +18,8 @@ public class Car {
     public Coordinates getCoordinates() {
         return coordinates;
     }
+
+    public Category getaCategory() {
+        return aCategory;
+    }
 }
