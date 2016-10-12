@@ -1,6 +1,7 @@
 public class Standard implements Category{
-    double extraPercentageCost = 10;
+    double extraPercentageCost = 5;
 
+    @Override
     public double getExtraPercentageCost() {
         return extraPercentageCost;
     }

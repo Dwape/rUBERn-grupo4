@@ -1,3 +1,8 @@
 public class Basic implements Category{
-    double quality = 0;
+    private double extraPercentageCost = 10;
+
+    @Override
+    public double getExtraPercentageCost() {
+        return 0;
+    }
 }
