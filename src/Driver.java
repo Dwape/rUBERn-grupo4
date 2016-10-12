@@ -3,21 +3,19 @@ import org.joda.time.LocalTime;
 
 public class Driver {
     Car aCar;
-    Coordinates coordinates; //el auto debería tener las coordenadas
     double balance=0;
     String name;
     boolean isTraveling;
     Schedule schedule;
 
-    public Driver(Car car, Coordinates coordinates, String name, Schedule schedule) {
+    public Driver(Car car,String name, Schedule schedule) {
         this.aCar = car;
-        this.coordinates = coordinates;
         this.name = name;
         this.schedule=schedule;
     }
 
     public void arrived(Coordinates finishCoordinates){
-        coordinates.setCoordinates(finishCoordinates.getValueX(),finishCoordinates.getValueY());
+        aCar.getCoordinates().setCoordinates(finishCoordinates.getValueX(),finishCoordinates.getValueY());
         isTraveling=false;
     }
 
@@ -35,7 +33,7 @@ public class Driver {
     }
 
     public Coordinates getCoordinates() {
-        return coordinates;
+        return aCar.getCoordinates();
     }
 
     public void addFunds(double amount){

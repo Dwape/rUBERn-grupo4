@@ -12,11 +12,13 @@ public class ChooseDriverTest {
     @Test
     public void evaluateChooseDriver(){
         Basic basic = new Basic();
-        Car car1 = new Car(3, basic);
-        Car car2 = new Car(4, basic);
-        Car car3 = new Car(4, basic);
+
         Coordinates coord1 = new Coordinates(5, 3);
         Coordinates coord2 = new Coordinates(6, 8);
+
+        Car car1 = new Car(3, basic, coord1);
+        Car car2 = new Car(4, basic, coord1);
+        Car car3 = new Car(4, basic, coord2);
 
         LocalTime hora = new LocalTime(7, 0, 0, 0);
         Schedule schedule1 = new Schedule();
@@ -30,15 +32,15 @@ public class ChooseDriverTest {
         Schedule schedule2 = new Schedule();
         schedule2.setHoursPerDay("04:00", "22:00", "monday");
         schedule2.setHoursPerDay("04:00", "22:00", "tuesday");
-        schedule2.setHoursPerDay("04:00", "22:00", "wednesday");
+        schedule2.setHoursPerDay("04:00","10:00","wednesday");
         schedule2.setHoursPerDay("04:00", "22:00", "thursday");
         schedule2.setHoursPerDay("04:00", "22:00", "friday");
         schedule2.setHoursPerDay("04:00", "22:00", "saturday");
         schedule2.setHoursPerDay("04:00", "22:00", "sunday");
 
-        Driver driver1 = new Driver(car1, coord1, "Pedro", schedule1);
-        Driver driver2 = new Driver(car2, coord1, "Juan", schedule2);
-        Driver driver3 = new Driver(car3, coord2, "Manuel", schedule2);
+        Driver driver1 = new Driver(car1, "Pedro", schedule1);
+        Driver driver2 = new Driver(car2, "Juan", schedule2);
+        Driver driver3 = new Driver(car3, "Manuel", schedule2);
 
         MainSystem system = new MainSystem();//Falta terminar de implementar los métodos de driver
         system.addDriver(driver1);
