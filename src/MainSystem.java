@@ -17,7 +17,7 @@ public class MainSystem {
         driverList.add(newDriver);
     }
 
-    public void Transaction(Client aClient, Driver aDriver, Coordinates startCoords, Coordinates finishCoords, Invoice anInvoice){
+    public void transaction(Client aClient, Driver aDriver, Coordinates startCoords, Coordinates finishCoords, Invoice anInvoice){
         double cost = 15+getDistance(startCoords, finishCoords)*0.01;
         double uberBalance = cost*0.10;
         double driverBalance = cost*0.90;
@@ -52,7 +52,7 @@ public class MainSystem {
         return Math.sqrt((finishCoords.getValueX() - startCoords.getValueX())+(finishCoords.getValueY() - startCoords.getValueY()));
     }
 
-    public Driver chooseDriver(Coordinates startCoordinates, int numberOfPeople){
+    public Driver chooseDriver(Coordinates startCoordinates,Coordinates finishCoords, int numberOfPeople){
         ArrayList<Driver> candidates = new ArrayList<>();
         for (int i=0; i<driverList.size(); i++){
             candidates.add(driverList.get(i));
@@ -84,7 +84,7 @@ public class MainSystem {
         int i4=0;
         while (i4<candidates.size()){
             Driver bestCandidate = getLowestImgCost(candidates, startCoordinates);
-            if (bestCandidate.requestDriver()){
+            if (bestCandidate.requestDriver(finishCoords)){
                 i4++;
                 return bestCandidate;
             }else{
@@ -108,5 +108,9 @@ public class MainSystem {
             }
         }
         return cheapestDriver;
+    }
+
+    public ArrayList<Driver> getDriverList() {
+        return driverList;
     }
 }

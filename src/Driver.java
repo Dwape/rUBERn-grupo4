@@ -5,8 +5,9 @@ public class Driver {
     Car aCar;
     double balance=0;
     String name;
-    boolean isTraveling;
+    boolean isTravelling;
     Schedule schedule;
+    Coordinates finishCoordinates;
 
     public Driver(Car car,String name, Schedule schedule) {
         this.aCar = car;
@@ -14,22 +15,27 @@ public class Driver {
         this.schedule=schedule;
     }
 
-    public void arrived(Coordinates finishCoordinates){
+    public void arrived(){
         aCar.getCoordinates().setCoordinates(finishCoordinates.getValueX(),finishCoordinates.getValueY());
-        isTraveling=false;
+        finishCoordinates = null;
+        isTravelling=false;
     }
 
-    public boolean requestDriver(){
-        /*char result = Scanner.getChar(name + ", do you accept the request? (Y/N)"); //No funciona test con scanner
+    public boolean requestDriver(Coordinates finishCoordinates){
+        char result = Scanner.getChar(name + ", do you accept the request? (Y/N)");
         switch (result){
-            case 'Y': return true; isTravelling = true;
-            case 'N': return false;
+            case 'Y':
+                isTravelling = true;
+                this.finishCoordinates=finishCoordinates;
+                return true;
+            case 'N':
+                return false;
             default:
                 System.out.println("Not a valid option");
-                requestDriver();
+                requestDriver(finishCoordinates);
                 return false;
-        }*/
-        return true;
+        }
+
     }
 
     public Coordinates getCoordinates() {
@@ -41,7 +47,7 @@ public class Driver {
     }
 
     public boolean checkAvailability(){ //si esta disponible y durante su horario de trabajo
-        if(!isTraveling) {
+        if(!isTravelling) {
             DateTime today = DateTime.now();
             int now = today.getMillisOfDay();
             int dayOfTheWeek = DateTime.now().getDayOfWeek();
@@ -56,5 +62,9 @@ public class Driver {
 
     public Car getCar(){
         return aCar;
+    }
+
+    public String getName() {
+        return name;
     }
 }
