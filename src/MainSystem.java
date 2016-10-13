@@ -52,7 +52,7 @@ public class MainSystem {
         return Math.sqrt((finishCoords.getValueX() - startCoords.getValueX())+(finishCoords.getValueY() - startCoords.getValueY()));
     }
 
-    public Driver chooseDriver(Coordinates startCoordinates, Coordinates finishCoordinates, int numberOfPeople){
+    public Driver chooseDriver(Coordinates startCoordinates, int numberOfPeople){
         ArrayList<Driver> candidates = new ArrayList<>();
         for (int i=0; i<driverList.size(); i++){
             candidates.add(driverList.get(i));
@@ -75,9 +75,17 @@ public class MainSystem {
         }
         int i3=0;
         while (i3<candidates.size()){
-            Driver bestCandidate = getLowestAdCost(candidates, startCoordinates);
-            if (bestCandidate.requestDriver()){
+            if (getDistance(startCoordinates, candidates.get(i3).getCoordinates())>10000){
+                candidates.remove(i3);
+            }else{
                 i3++;
+            }
+        }
+        int i4=0;
+        while (i4<candidates.size()){
+            Driver bestCandidate = getLowestImgCost(candidates, startCoordinates);
+            if (bestCandidate.requestDriver()){
+                i4++;
                 return bestCandidate;
             }else{
                 candidates.remove(bestCandidate);
@@ -86,21 +94,7 @@ public class MainSystem {
         throw new NoAvailableDriverExc();
     }
 
-    private Driver getClosestDriver(ArrayList<Driver> candidates, Coordinates startCoordinates){
-        double distance = getDistance(startCoordinates, candidates.get(0).getCoordinates());
-        Driver closestDriver = candidates.get(0);
-        for (int i=1; i< candidates.size(); i++){
-            double currentDriversDistance;
-            currentDriversDistance = getDistance(startCoordinates, candidates.get(i).getCoordinates());
-            if (currentDriversDistance < distance){
-                closestDriver = candidates.get(i);
-                distance = currentDriversDistance;
-            }
-        }
-        return closestDriver;
-    }
-
-    private Driver getLowestAdCost(ArrayList<Driver> candidates, Coordinates startCoordinates){
+    private Driver getLowestImgCost(ArrayList<Driver> candidates, Coordinates startCoordinates){
         double initDistanceCost = getDistance(startCoordinates, candidates.get(0).getCoordinates())*0.004;
         double costAd = initDistanceCost+(initDistanceCost*(candidates.get(0).getCar().getaCategory().getExtraPercentageCost()*0.01));
         Driver cheapestDriver = candidates.get(0);

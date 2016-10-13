@@ -1,3 +1,5 @@
+import Exceptions.NoAvailableDriverExc;
+
 /**
  * Created by Gianni on 10/10/2016.
  */
@@ -110,9 +112,14 @@ public class rUBERn {
                     System.out.println("You are already travelling");
                     clientMenu(user, rUBERnSystem, invoice);
                 }
+                try{
+                    Driver chosenDriver = rUBERnSystem.chooseDriver(start, numberOfPeople);
+                    user.changeStatus();
+                }catch (NoAvailableDriverExc exc){
+                    System.out.println("No available driver, please try again later");
+                    clientMenu(user, rUBERnSystem, invoice);
+                }
 
-                Driver chosenDriver = rUBERnSystem.chooseDriver(start, finish, numberOfPeople);
-                user.changeStatus();
                 break;
             case 2:
                 double founds = Scanner.getDouble("How much money would you like to add? ");
