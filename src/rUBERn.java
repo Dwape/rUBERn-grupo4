@@ -53,24 +53,30 @@ public class rUBERn {
     }
 
     static public void driverMenu(MainSystem rUBERnSystem, Invoice invoice){
-        System.out.println("1.");
+        System.out.println("1.Create Driver");
         System.out.println("2.Terminar Viaje");
-        System.out.println("3.Exit");
+        System.out.println("3.Back");
+        System.out.println("4.Exit");
         int option = Scanner.getInt("Which option would you like to excecute: ");
 
         switch (option) {
             case 1:
 
+                Car car = createDriver();
+                Driver driver = new Driver()
                 break;
             case 2:
 
                 break;
             case 3:
+                mainMenu(rUBERnSystem,invoice);
+                break;
+            case 4:
                 System.exit(0);
                 break;
             default:
                 System.out.println("Not a valid option");
-                mainMenu(rUBERnSystem, invoice);
+                driverMenu(rUBERnSystem, invoice);
                 break;
         }
     }
@@ -78,7 +84,9 @@ public class rUBERn {
     static public void clientMenu(Client user, MainSystem rUBERnSystem, Invoice invoice){
         System.out.println("1.Call Driver");
         System.out.println("2.Add Funds");
-        System.out.println("3.Exit");
+        System.out.println("3.Check Funds");
+        System.out.println("4.Back");
+        System.out.println("5.Exit");
         int option = Scanner.getInt("Which option would you like to excecute: ");
 
         switch (option) {
@@ -91,10 +99,11 @@ public class rUBERn {
                 long FinishY = Scanner.getLong("Enter destiny's Y coordinate: ");
                 Coordinates finish = new Coordinates(FinishX, FinishY);
 
-                int numberOfPeople = Scanner.getInt("How many people will travel?");
+                int numberOfPeople = Scanner.getInt("How many people will travel? ");
 
                 double price = rUBERnSystem.calculateCost(start, finish);
                 if (price > user.getBalance()){
+                    System.out.println("Not enough founds");
                     clientMenu(user, rUBERnSystem, invoice);
                 }
                 if (user.getStatus()){
@@ -104,12 +113,20 @@ public class rUBERn {
 
                 Driver chosenDriver = rUBERnSystem.chooseDriver(start, finish, numberOfPeople);
                 user.changeStatus();
-
                 break;
             case 2:
-
+                double founds = Scanner.getDouble("How much money would you like to add? ");
+                user.addFunds(founds);
+                clientMenu(user,rUBERnSystem,invoice);
                 break;
             case 3:
+                System.out.println(user.getBalance());
+                clientMenu(user,rUBERnSystem,invoice);
+                break;
+            case 4:
+                mainMenu(rUBERnSystem,invoice);
+                break;
+            case 5:
                 System.exit(0);
                 break;
             default:
@@ -124,5 +141,48 @@ public class rUBERn {
         long creditCardNumber = Scanner.getLong("Enter your credit card number");
         Client user = new Client(0, creditCardNumber);
         return user;
+    }
+
+    static public Driver createDriver(){
+        String name = Scanner.getString("Please enter your name: ");
+
+        boolean loop = true;
+        Category category;
+        while (loop) {
+            System.out.println("1.Premium");
+            System.out.println("2.Standard");
+            System.out.println("3.Basic");
+            int numerCategory = Scanner.getInt("Choose a category for your car: ");
+            switch (numerCategory) {
+                case 1:
+                    category = new Premium();
+                    loop = false;
+                    break;
+                case 2:
+                    category = new Standard();
+                    loop = false;
+                    break;
+                case 3:
+                    category = new Basic();
+                    loop = false;
+                    break;
+                default:
+                    System.out.println("Not a valid option");
+                    break;
+            }
+        }
+        System.out.println("Please enter your coordinates");
+        long coordinateX = Scanner.getLong("Enter your X coordinate: ");
+        long coordinateY = Scanner.getLong("Enter your y coordinate: ");
+        Coordinates coordinates = new Coordinates(coordinateX,coordinateY);
+        int spaceCar = Scanner.getInt("Car capacity for people: ");
+        System.out.println();
+        Car car = new Car(spaceCar,category,coordinates);
+        Driver driver = new Driver(car,name,)
+    }
+
+    static public Schedule createSchedule(){
+        Schedule schedule = new Schedule();
+
     }
 }
