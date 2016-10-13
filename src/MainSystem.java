@@ -29,13 +29,13 @@ public class MainSystem {
                 anInvoice.addTipoOper("Driver charges money");
                 anInvoice.addMonto(driverBalance);
             }else if(i==1){
-                anInvoice.addTipoOper("Uber charges comision");
+                anInvoice.addTipoOper("Uber charges commission");
                 anInvoice.addMonto(uberBalance);
             }else if(i==2){
                 anInvoice.addTipoOper("Client pays for service");
                 anInvoice.addMonto(clientBalance);
             }
-            anInvoice.addIdentificador("Viaje");
+            anInvoice.addIdentificador("Trip");
             anInvoice.addFecha(DateTime.now());
             anInvoice.addDescripcion("A description");
             anInvoice.addTarjeta(aClient.getCreditCardNumber());

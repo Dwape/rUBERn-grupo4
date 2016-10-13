@@ -13,7 +13,6 @@ public class rUBERn {
 
         Invoice invoice = new Invoice();
 
-        Basic basic = new Basic();
         Standard standard = new Standard();
         Premium premium = new Premium();
         Coordinates coordinates1 = new Coordinates(100, 545);
@@ -38,7 +37,7 @@ public class rUBERn {
         System.out.println("1.Driver Options");
         System.out.println("2.Client Options");
         System.out.println("3.Exit");
-        int option = Scanner.getInt("Which option would you like to excecute: ");
+        int option = Scanner.getInt("Which option would you like to execute: ");
 
         switch (option) {
             case 1:
@@ -58,16 +57,16 @@ public class rUBERn {
     }
 
     static public void driverMenu(MainSystem rUBERnSystem, Invoice invoice, Driver driver, Client client){
-        System.out.println("1.Terminar Viaje");
+        System.out.println("1.Finish Trip");
         System.out.println("2.Back");
         System.out.println("3.Exit");
-        int option = Scanner.getInt("Which option would you like to excecute: ");
+        int option = Scanner.getInt("Which option would you like to execute: ");
 
         switch (option) {
             case 1:
                 driver.arrived();
                 client.changeStatus();
-                System.out.println("Su viaje fue terminado correctamente");
+                System.out.println("Your trip has finished successfully");
             case 2:
                 mainMenu(rUBERnSystem,invoice, client);
                 break;
@@ -87,7 +86,7 @@ public class rUBERn {
         System.out.println("3.Check Funds");
         System.out.println("4.Back");
         System.out.println("5.Exit");
-        int option = Scanner.getInt("Which option would you like to excecute: ");
+        int option = Scanner.getInt("Which option would you like to execute: ");
 
         switch (option) {
             case 1:
@@ -103,7 +102,7 @@ public class rUBERn {
 
                 double price = rUBERnSystem.calculateCost(start, finish);
                 if (price > client.getBalance()){
-                    System.out.println("Not enough founds");
+                    System.out.println("Not enough funds");
                     clientMenu(client, rUBERnSystem, invoice);
                 }
                 if (client.getStatus()){
@@ -114,7 +113,7 @@ public class rUBERn {
                     Driver chosenDriver = rUBERnSystem.chooseDriver(start, finish,numberOfPeople);
                     client.changeStatus();
                     rUBERnSystem.transaction(client,chosenDriver,start,finish,invoice);
-                    System.out.println("Travel started successfully");
+                    System.out.println("Trip started successfully");
                     clientMenu(client,rUBERnSystem,invoice);
                 }catch (NoAvailableDriverExc exc){
                     System.out.println("No available driver, please try again later");
@@ -146,24 +145,25 @@ public class rUBERn {
 
     static public void driverList(MainSystem mainSystem, Invoice invoice, Client client){
         ArrayList<Driver>driverArrayList = mainSystem.getDriverList();
-        Driver choosenDriver = driverArrayList.get(0);
+        Driver chosenDriver = driverArrayList.get(0);
         System.out.println("1.Register");
         for(int i=0;i<driverArrayList.size();i++){
             System.out.println(i+2+"."+driverArrayList.get(i).getName());
         }
         int result = Scanner.getInt("Select a driver: ");
         if(result==1){
-            choosenDriver = createDriver();
+            chosenDriver = createDriver();
+            mainSystem.addDriver(chosenDriver);
             System.out.println("Driver created successfully");
         }else {
             try {
-                choosenDriver = driverArrayList.get(result - 2);
+                chosenDriver = driverArrayList.get(result - 2);
             } catch (IndexOutOfBoundsException t) {
                 System.out.println("Not a valid option");
                 driverList(mainSystem, invoice, client);
             }
         }
-        driverMenu(mainSystem, invoice, choosenDriver, client);
+        driverMenu(mainSystem, invoice, chosenDriver, client);
     }
 
     static public Client logIn(){
@@ -212,37 +212,28 @@ public class rUBERn {
         return new Driver(car,name,createSchedule());
     }
 
-    static public Schedule createSchedule(){
+    static public Schedule createSchedule() {
         Schedule schedule = new Schedule();
+        String[] daysOfTheWeek = new String[7];
+        daysOfTheWeek[0] = "monday";
+        daysOfTheWeek[1] = "tuesday";
+        daysOfTheWeek[2] = "wednesday";
+        daysOfTheWeek[3] = "thursday";
+        daysOfTheWeek[4] = "friday";
+        daysOfTheWeek[5] = "saturday";
+        daysOfTheWeek[6] = "sunday";
+        int i = 0;
         System.out.println("Please enter your working hours");
-        String imonday = Scanner.getString("Enter your starting hour on monday (HH:mm): ");
-        String fmonday = Scanner.getString("Enter your finish hour on monday (HH:mm): ");
-        schedule.setHoursPerDay(imonday,fmonday,"monday");
-
-        String ituesday = Scanner.getString("Enter your starting hour on tuesday (HH:mm): ");
-        String ftuesday = Scanner.getString("Enter your finish hour on tuesday (HH:mm): ");
-        schedule.setHoursPerDay(ituesday,ftuesday,"tuesday");
-
-        String iwednesday = Scanner.getString("Enter your starting hour on wednesday (HH:mm): ");
-        String fwednesday = Scanner.getString("Enter your finish hour on wednesday (HH:mm): ");
-        schedule.setHoursPerDay(iwednesday,fwednesday,"wednesday");
-
-        String ithusrday = Scanner.getString("Enter your starting hour on thursday (HH:mm): ");
-        String fthusrday = Scanner.getString("Enter your finish hour on thursday (HH:mm): ");
-        schedule.setHoursPerDay(ithusrday,fthusrday,"thursday");
-
-        String ifriday = Scanner.getString("Enter your starting hour on friday (HH:mm): ");
-        String ffriday = Scanner.getString("Enter your finish hour on friday (HH:mm): ");
-        schedule.setHoursPerDay(ifriday,ffriday,"friday");
-
-        String isaturday = Scanner.getString("Enter your starting hour on saturday (HH:mm): ");
-        String fsaturday = Scanner.getString("Enter your finish hour on saturday (HH:mm): ");
-        schedule.setHoursPerDay(isaturday,fsaturday,"saturday");
-
-        String isunday = Scanner.getString("Enter your starting hour on sunday (HH:mm): ");
-        String fsunday = Scanner.getString("Enter your finish hour on sunday (HH:mm): ");
-        schedule.setHoursPerDay(isunday,fsunday,"sunday");
-
+        while (i < 8) {
+            try {
+                String iDay = Scanner.getString("Enter your starting hour on " + daysOfTheWeek[i] + " (HH:mm): ");
+                String fDay = Scanner.getString("Enter your finish hour on " + daysOfTheWeek[i] + " (HH:mm): ");
+                schedule.setHoursPerDay(iDay, fDay, daysOfTheWeek[i]);
+                i++;
+            } catch (IllegalArgumentException exc) {
+                System.out.println("Please enter the time in the following format (HH:mm)");
+            }
+        }
         return schedule;
     }
 }
