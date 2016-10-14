@@ -6,12 +6,12 @@ import java.util.ArrayList;
  * Created by Gianni on 10/9/2016.
  */
 public class Invoice {
-    ArrayList<String> identificadoresDeOperacion = new ArrayList<>();
-    ArrayList<String> tiposDeOperacion = new ArrayList<>();
-    ArrayList<DateTime> fechas = new ArrayList<>();
-    ArrayList<Long> numerosDeTarjeta = new ArrayList<>();
-    ArrayList<String> descripciones = new ArrayList<>();
-    ArrayList<Double> montos = new ArrayList<>();
+    private ArrayList<String> identificadoresDeOperacion = new ArrayList<>();
+    private ArrayList<String> tiposDeOperacion = new ArrayList<>();
+    private ArrayList<DateTime> fechas = new ArrayList<>();
+    private ArrayList<Long> numerosDeTarjeta = new ArrayList<>();
+    private ArrayList<String> descripciones = new ArrayList<>();
+    private ArrayList<Double> montos = new ArrayList<>();
 
     public void addIdentificador(String identificadorDeOperacion){
         identificadoresDeOperacion.add(identificadorDeOperacion);

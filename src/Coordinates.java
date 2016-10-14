@@ -1,7 +1,7 @@
 public class Coordinates {
 
-    long valueX;
-    long valueY;
+    private long valueX;
+    private long valueY;
 
     public Coordinates(long ValueX, long ValueY){
         this.valueX = ValueX;

@@ -4,7 +4,7 @@
 public class Car {
     private int space;
     private Category aCategory;
-    Coordinates coordinates;
+    private Coordinates coordinates;
 
     public Car(int space, Category aCategory, Coordinates coordinates) {
         this.space = space;

@@ -4,7 +4,8 @@ import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.LocalTime;
 
 public class Schedule {
-    int[][] workWeek = new int[7][2];
+    private int[][] workWeek = new int[7][2];
+
     public void setHoursPerDay (String horasTrabajoInicia, String horasTrabajoFin, String dayOfTheWeek){
         int i=0;
         switch (dayOfTheWeek){

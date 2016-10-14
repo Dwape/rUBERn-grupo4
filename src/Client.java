@@ -6,7 +6,7 @@ import Exceptions.InvalidAmountExc;
 public class Client {
     private double balance;
     private long creditCardNumber;
-    boolean isTraveling;
+    private boolean isTraveling;
 
     public Client(double balance, long creditCardNumber) {
         this.balance = balance;

@@ -1,5 +1,5 @@
 public class Premium implements Category{
-    double extraPercentageCost = 0;
+    private double extraPercentageCost = 0;
 
     @Override
     public double getExtraPercentageCost() {
