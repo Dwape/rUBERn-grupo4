@@ -1,5 +1,4 @@
 import Exceptions.NoAvailableDriverExc;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -169,7 +168,7 @@ public class rUBERn {
     static public Client logIn(){
         String name = Scanner.getString("Enter your name: ");
         long creditCardNumber = Scanner.getLong("Enter your credit card number: ");
-        Client client = new Client(0, creditCardNumber);
+        Client client = new Client(0,creditCardNumber);
         return client;
     }
 
@@ -202,11 +201,11 @@ public class rUBERn {
                     break;
             }
         }
+        int spaceCar = Scanner.getInt("Car capacity for passenger: ");
         System.out.println("Please enter your coordinates");
         long coordinateX = Scanner.getLong("Enter your X coordinate: ");
         long coordinateY = Scanner.getLong("Enter your y coordinate: ");
         Coordinates coordinates = new Coordinates(coordinateX,coordinateY);
-        int spaceCar = Scanner.getInt("Car capacity for people: ");
         System.out.println();
         Car car = new Car(spaceCar,category,coordinates);
         return new Driver(car,name,createSchedule());
@@ -224,7 +223,7 @@ public class rUBERn {
         daysOfTheWeek[6] = "sunday";
         int i = 0;
         System.out.println("Please enter your working hours");
-        while (i < 8) {
+        while (i < 7) {
             try {
                 String iDay = Scanner.getString("Enter your starting hour on " + daysOfTheWeek[i] + " (HH:mm): ");
                 String fDay = Scanner.getString("Enter your finish hour on " + daysOfTheWeek[i] + " (HH:mm): ");
