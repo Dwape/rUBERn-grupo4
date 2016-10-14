@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Created by Gianni on 10/9/2016.
  */
 public class MainSystem {
-    ArrayList<Driver> driverList;
+    private ArrayList<Driver> driverList;
 
     public MainSystem(){
         driverList = new ArrayList<>();

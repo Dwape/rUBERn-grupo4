@@ -63,9 +63,15 @@ public class rUBERn {
 
         switch (option) {
             case 1:
-                driver.arrived();
-                client.changeStatus();
-                System.out.println("Your trip has finished successfully");
+                if (driver.isTravelling()){
+                    driver.arrived();
+                    client.changeStatus();
+                    System.out.println("Your trip has finished successfully");
+                }else{
+                    System.out.println("You are not currently on a trip");
+                    driverMenu(rUBERnSystem, invoice,driver, client);
+                }
+
             case 2:
                 mainMenu(rUBERnSystem,invoice, client);
                 break;
@@ -123,10 +129,11 @@ public class rUBERn {
             case 2:
                 double founds = Scanner.getDouble("How much money would you like to add? ");
                 client.addFunds(founds);
+                System.out.println("Funds added successfully");
                 clientMenu(client,rUBERnSystem,invoice);
                 break;
             case 3:
-                System.out.println(client.getBalance());
+                System.out.println("Your balance is: $"+client.getBalance());
                 clientMenu(client,rUBERnSystem,invoice);
                 break;
             case 4:

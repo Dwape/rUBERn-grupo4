@@ -1,12 +1,12 @@
 import org.joda.time.DateTime;
 
 public class Driver {
-    Car aCar;
-    double balance=0;
-    String name;
-    boolean isTravelling;
-    Schedule schedule;
-    Coordinates finishCoordinates;
+    private Car aCar;
+    private double balance=0;
+    private String name;
+    private boolean isTravelling;
+    private Schedule schedule;
+    private Coordinates finishCoordinates;
 
     public Driver(Car car,String name, Schedule schedule) {
         this.aCar = car;
@@ -30,9 +30,8 @@ public class Driver {
             case 'N':
                 return false;
             default:
-                System.out.println("Not a valid option");
-                requestDriver(finishCoordinates);
-                return false;
+                System.out.println("Not a valid option (Case sensitive)");
+                return requestDriver(finishCoordinates);
         }
 
     }
@@ -65,5 +64,9 @@ public class Driver {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isTravelling() {
+        return isTravelling;
     }
 }
