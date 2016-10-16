@@ -4,8 +4,8 @@ import java.util.ArrayList;
  * Created by Gianni on 10/16/2016.
  */
 public class MainMenu {
-    ClientMenu clientMenu;
-    DriverMenu driverMenu;
+    private ClientMenu clientMenu;
+    private DriverMenu driverMenu;
 
     public MainMenu(MainSystem rUBERnSystem, Invoice invoice, Client client){
         System.out.println("1.Driver Options");
@@ -30,7 +30,7 @@ public class MainMenu {
         }
     }
 
-    public void driverList(MainSystem mainSystem, Invoice invoice, Client client){
+    private void driverList(MainSystem mainSystem, Invoice invoice, Client client){
         ArrayList<Driver> driverArrayList = mainSystem.getDriverList();
         Driver chosenDriver = driverArrayList.get(0);
         System.out.println("1.Register");
@@ -53,7 +53,7 @@ public class MainMenu {
         driverMenu = new DriverMenu(mainSystem, invoice, chosenDriver, client);
     }
 
-    static public Driver createDriver(){
+    private Driver createDriver(){
         String name = Scanner.getString("Please enter your name: ");
 
         boolean loop = true;
@@ -92,7 +92,7 @@ public class MainMenu {
         return new Driver(car,name,createSchedule());
     }
 
-    static public Schedule createSchedule() {
+    private Schedule createSchedule() {
         Schedule schedule = new Schedule();
         String[] daysOfTheWeek = new String[7];
         daysOfTheWeek[0] = "monday";
