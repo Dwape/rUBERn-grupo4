@@ -7,7 +7,7 @@ public class MainMenu {
     private ClientMenu clientMenu;
     private DriverMenu driverMenu;
 
-    public MainMenu(Data data){
+    public MainMenu(MainData data){
         System.out.println("1.Driver Options");
         System.out.println("2.Client Options");
         System.out.println("3.rUBERn Options");
@@ -34,7 +34,7 @@ public class MainMenu {
         }
     }
 
-    private void driverList(Data data){
+    private void driverList(MainData data){
         ArrayList<Driver> driverArrayList = data.getrUBERnSystem().getDriverList();
         Driver chosenDriver = driverArrayList.get(0);
         System.out.println("1.Register");

@@ -1,7 +1,7 @@
 
 public class rUBERnMenu {
     MainSystem rUBERnSystem;
-    public rUBERnMenu (Data data){
+    public rUBERnMenu (MainData data){
         this.rUBERnSystem = rUBERnSystem;
 
         System.out.println("1.Register Driver");

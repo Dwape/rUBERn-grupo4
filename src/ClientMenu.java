@@ -5,7 +5,7 @@ import Exceptions.NoAvailableDriverExc;
  */
 public class ClientMenu {
 
-    public ClientMenu(Data data){
+    public ClientMenu(MainData data){
         System.out.println("1.Call Driver");
         System.out.println("2.Add Funds");
         System.out.println("3.Check Funds");
@@ -40,7 +40,7 @@ public class ClientMenu {
         }
     }
 
-    private void callDriver(Data data){
+    private void callDriver(MainData data){
         long StartX = Scanner.getLong("Enter current X coordinates: ");
         long StartY = Scanner.getLong("Enter current Y coordinates: ");
         Coordinates start = new Coordinates(StartX, StartY);
