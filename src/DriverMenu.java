@@ -3,7 +3,7 @@
  */
 public class DriverMenu {
 
-    public DriverMenu(MainSystem rUBERnSystem, Invoice invoice, Driver driver, Client client){
+    public DriverMenu(Data data){
         System.out.println("1.Finish Trip");
         System.out.println("2.Back");
         System.out.println("3.Exit");
@@ -11,28 +11,29 @@ public class DriverMenu {
 
         switch (option) {
             case 1:
-                finishTrip(rUBERnSystem,invoice,driver,client);
+                finishTrip(data);
             case 2:
-                new MainMenu(rUBERnSystem,invoice, client);
+                new MainMenu(data);
                 break;
             case 3:
                 System.exit(0);
                 break;
             default:
                 System.out.println("Not a valid option");
-                new DriverMenu(rUBERnSystem, invoice,driver, client);
+                new DriverMenu(data);
                 break;
         }
     }
 
-    private void finishTrip(MainSystem rUBERnSystem, Invoice invoice, Driver driver, Client client){
-        if (driver.isTravelling()){
-            driver.arrived();
-            client.changeStatus();
+    private void finishTrip(Data data){
+        if (data.getDriver().isTravelling()){
+            data.getDriver().arrived();
+            data.getClient().changeStatus();
             System.out.println("Your trip has finished successfully");
+            data.getrUBERnSystem().transaction(data.getClient(),data.getDriver(),data.startCoordinates,data.finishCoordinates, data.getInvoice());
         }else{
             System.out.println("You are not currently on a trip");
-            new DriverMenu(rUBERnSystem, invoice,driver, client);
+            new DriverMenu(data);
         }
     }
 }

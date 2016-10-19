@@ -7,9 +7,7 @@ import java.util.ArrayList;
  */
 public class rUBERn {
     public static void main(String[] args) {
-
         MainSystem rUBERnSystem = new MainSystem();
-
         Invoice invoice = new Invoice();
 
         Standard standard = new Standard();
@@ -28,8 +26,7 @@ public class rUBERn {
         rUBERnSystem.addDriver(driver1);
         rUBERnSystem.addDriver(driver2);
 
-        Client client = logIn();
-        MainMenu mainMenu = new MainMenu(rUBERnSystem, invoice, client);
+        MainMenu mainMenu = new MainMenu(new Data(new NoClient(),rUBERnSystem,invoice,new NoDriver()));
     }
 
 

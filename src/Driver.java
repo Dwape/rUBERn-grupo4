@@ -1,25 +1,19 @@
 import org.joda.time.DateTime;
 
-public class Driver {
-    private Car aCar;
-    private double balance=0;
-    private String name;
-    private boolean isTravelling;
-    private Schedule schedule;
-    private Coordinates finishCoordinates;
+public class Driver extends AbstractDriver {
 
     public Driver(Car car,String name, Schedule schedule) {
-        this.aCar = car;
-        this.name = name;
-        this.schedule=schedule;
+        super(car, name, schedule);
     }
 
+    @Override
     public void arrived(){
         aCar.getCoordinates().setCoordinates(finishCoordinates.getValueX(),finishCoordinates.getValueY());
         finishCoordinates = null;
         isTravelling=false;
     }
 
+    @Override
     public boolean requestDriver(Coordinates finishCoordinates){
         char result = Scanner.getChar(name + ", do you accept the request? (Y/N)");
         switch (result){
@@ -36,14 +30,17 @@ public class Driver {
 
     }
 
+    @Override
     public Coordinates getCoordinates() {
         return aCar.getCoordinates();
     }
 
+    @Override
     public void addFunds(double amount){
         balance+=amount;
     }
 
+    @Override
     public boolean checkAvailability(){ //si esta disponible y durante su horario de trabajo
         if(!isTravelling) {
             DateTime today = DateTime.now();
@@ -58,14 +55,17 @@ public class Driver {
         }
     }
 
+    @Override
     public Car getCar(){
         return aCar;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public boolean isTravelling() {
         return isTravelling;
     }

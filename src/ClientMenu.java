@@ -5,7 +5,7 @@ import Exceptions.NoAvailableDriverExc;
  */
 public class ClientMenu {
 
-    public ClientMenu(Client client, MainSystem rUBERnSystem, Invoice invoice){
+    public ClientMenu(Data data){
         System.out.println("1.Call Driver");
         System.out.println("2.Add Funds");
         System.out.println("3.Check Funds");
@@ -15,32 +15,32 @@ public class ClientMenu {
 
         switch (option) {
             case 1:
-                callDriver(client,rUBERnSystem,invoice);
+                callDriver(data);
                 break;
             case 2:
                 double founds = Scanner.getDouble("How much money would you like to add? ");
-                client.addFunds(founds);
+                data.getClient().addFunds(founds);
                 System.out.println("Funds added successfully");
-                new ClientMenu(client,rUBERnSystem,invoice);
+                new ClientMenu(data);
                 break;
             case 3:
-                System.out.println("Your balance is: $"+client.getBalance());
-                new ClientMenu(client,rUBERnSystem,invoice);
+                System.out.println("Your balance is: $"+data.getClient().getBalance());
+                new ClientMenu(data);
                 break;
             case 4:
-                new MainMenu(rUBERnSystem,invoice,client);
+                new MainMenu(data);
                 break;
             case 5:
                 System.exit(0);
                 break;
             default:
                 System.out.println("Not a valid option");
-                new MainMenu(rUBERnSystem, invoice, client);
+                new MainMenu(data);
                 break;
         }
     }
 
-    private void callDriver(Client client, MainSystem rUBERnSystem, Invoice invoice){
+    private void callDriver(Data data){
         long StartX = Scanner.getLong("Enter current X coordinates: ");
         long StartY = Scanner.getLong("Enter current Y coordinates: ");
         Coordinates start = new Coordinates(StartX, StartY);
@@ -51,24 +51,26 @@ public class ClientMenu {
 
         int numberOfPeople = Scanner.getInt("How many people will travel? ");
 
-        double price = rUBERnSystem.calculateCost(start, finish);
-        if (price > client.getBalance()){
+        double price = data.getrUBERnSystem().calculateCost(start, finish);
+        if (price > data.getClient().getBalance()){
             System.out.println("Not enough funds");
-            new ClientMenu(client, rUBERnSystem, invoice);
+            new ClientMenu(data);
         }
-        if (client.getStatus()){
+        if (data.getClient().getStatus()){
             System.out.println("You are already travelling");
-            new ClientMenu(client, rUBERnSystem, invoice);
+            new ClientMenu(data);
         }
         try{
-            Driver chosenDriver = rUBERnSystem.chooseDriver(start, finish,numberOfPeople);
-            client.changeStatus();
-            rUBERnSystem.transaction(client,chosenDriver,start,finish,invoice);
+            Driver chosenDriver = data.getrUBERnSystem().chooseDriver(start, finish,numberOfPeople);
+            data.getClient().changeStatus();
+            data.setDriver(chosenDriver);
+            data.setStartCoordinates(start);
+            data.setFinishCoordinates(finish);
             System.out.println("Trip started successfully");
-            new ClientMenu(client,rUBERnSystem,invoice);
+            new ClientMenu(data);
         }catch (NoAvailableDriverExc exc){
             System.out.println("No available driver, please try again later");
-            new ClientMenu(client, rUBERnSystem, invoice);
+            new ClientMenu(data);
         }
     }
 }
