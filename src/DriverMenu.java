@@ -3,7 +3,7 @@
  */
 public class DriverMenu {
 
-    public DriverMenu(Data data){
+    public DriverMenu(MainData data){
         System.out.println("1.Finish Trip");
         System.out.println("2.Back");
         System.out.println("3.Exit");
@@ -25,7 +25,7 @@ public class DriverMenu {
         }
     }
 
-    private void finishTrip(Data data){
+    private void finishTrip(MainData data){
         if (data.getDriver().isTravelling()){
             data.getDriver().arrived();
             data.getClient().changeStatus();

@@ -1,9 +1,7 @@
 
 public class rUBERnMenu {
-    MainSystem rUBERnSystem;
-    public rUBERnMenu (Data data){
-        this.rUBERnSystem = rUBERnSystem;
 
+    public rUBERnMenu (MainData data){
         System.out.println("1.Register Driver");
         System.out.println("2.Print Invoice");
         System.out.println("3.Back");
@@ -12,7 +10,8 @@ public class rUBERnMenu {
 
         switch (result){
             case 1:
-                rUBERnSystem.addDriver(createDriver());
+                data.getrUBERnSystem().addDriver(createDriver());
+                new rUBERnMenu(data);
                 break;
             case 2:
                 break;
