@@ -11,15 +11,7 @@ public class DriverMenu {
 
         switch (option) {
             case 1:
-                if (driver.isTravelling()){
-                    driver.arrived();
-                    client.changeStatus();
-                    System.out.println("Your trip has finished successfully");
-                }else{
-                    System.out.println("You are not currently on a trip");
-                    new DriverMenu(rUBERnSystem, invoice,driver, client);
-                }
-
+                finishTrip(rUBERnSystem,invoice,driver,client);
             case 2:
                 new MainMenu(rUBERnSystem,invoice, client);
                 break;
@@ -30,6 +22,17 @@ public class DriverMenu {
                 System.out.println("Not a valid option");
                 new DriverMenu(rUBERnSystem, invoice,driver, client);
                 break;
+        }
+    }
+
+    private void finishTrip(MainSystem rUBERnSystem, Invoice invoice, Driver driver, Client client){
+        if (driver.isTravelling()){
+            driver.arrived();
+            client.changeStatus();
+            System.out.println("Your trip has finished successfully");
+        }else{
+            System.out.println("You are not currently on a trip");
+            new DriverMenu(rUBERnSystem, invoice,driver, client);
         }
     }
 }
