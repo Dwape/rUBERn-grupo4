@@ -9,7 +9,6 @@ public class Client extends AbstractClient{
         super(balance, creditCardNumber);
     }
 
-    @Override
     public void addFunds(double amount){
         if (amount>0){
             balance+=amount;
@@ -17,7 +16,6 @@ public class Client extends AbstractClient{
             throw new InvalidAmountExc();
     }
 
-    @Override
     public void spend(double amount){
         if (amount>0&&amount<=balance){
             balance-=amount;
@@ -25,22 +23,18 @@ public class Client extends AbstractClient{
             throw new InvalidAmountExc();
     }
 
-    @Override
     public long getCreditCardNumber() {
         return creditCardNumber;
     }
 
-    @Override
     public boolean getStatus(){
         return isTraveling;
     }
 
-    @Override
     public double getBalance(){
         return balance;
     }
 
-    @Override
     public void changeStatus(){
         isTraveling = !isTraveling;
     }

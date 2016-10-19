@@ -17,29 +17,21 @@ public class MainSystem {
         driverList.add(newDriver);
     }
 
-    public void transaction(Client aClient, Driver aDriver, Coordinates startCoords, Coordinates finishCoords, Invoice anInvoice){
+    public void transaction(AbstractClient aClient, AbstractDriver aDriver, Coordinates startCoords, Coordinates finishCoords, Invoice anInvoice){
         double cost = 15+getDistance(startCoords, finishCoords)*0.01;
         double uberBalance = cost*0.10;
         double driverBalance = cost*0.90;
         double clientBalance = cost*(-1);
         aDriver.addFunds(driverBalance);
         aClient.spend(cost);
-        for (int i = 0;i<3;i++){
-            if (i==0){
-                anInvoice.addTipoOper("Driver charges money");
-                anInvoice.addMonto(driverBalance);
-            }else if(i==1){
-                anInvoice.addTipoOper("Uber charges commission");
-                anInvoice.addMonto(uberBalance);
-            }else if(i==2){
-                anInvoice.addTipoOper("Client pays for service");
-                anInvoice.addMonto(clientBalance);
-            }
-            anInvoice.addIdentificador("Trip");
-            anInvoice.addFecha(DateTime.now());
-            anInvoice.addDescripcion("A description");
-            anInvoice.addTarjeta(aClient.getCreditCardNumber());
-        }
+
+        Transaction driverTransaction = new Transaction("Trip", "Driver charges money", aClient.getCreditCardNumber(), "A description", driverBalance);
+        Transaction uberTransaction = new Transaction("Trip", "Uber charges commission", aClient.getCreditCardNumber(), "A description", uberBalance);
+        Transaction clientTransaction = new Transaction("Trip", "Client pays for service", aClient.getCreditCardNumber(), "A description", clientBalance);
+
+        anInvoice.add(driverTransaction);
+        anInvoice.add(uberTransaction);
+        anInvoice.add(clientTransaction);
 
     }
 

@@ -12,6 +12,10 @@ public class Invoice {
         transactions = new ArrayList<>();
     }
 
+    public void add(Transaction newTransaction){
+        transactions.add(newTransaction);
+    }
+
     public void print(){
         for (int i =0; i<transactions.size(); i++){
             System.out.println(transactions.get(i).getTransactionIdentifier());
