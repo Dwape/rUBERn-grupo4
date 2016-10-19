@@ -1,5 +1,8 @@
+/**
+ * Created by Dwape on 10/19/16.
+ */
+public class MainData {
 
-public class Data {
     AbstractClient client;
     MainSystem rUBERnSystem;
     Invoice invoice;
@@ -7,7 +10,7 @@ public class Data {
     Coordinates startCoordinates;
     Coordinates finishCoordinates;
 
-    public Data(AbstractClient client, MainSystem rUBERnSystem, Invoice invoice, AbstractDriver driver) {
+    public MainData(AbstractClient client, MainSystem rUBERnSystem, Invoice invoice, AbstractDriver driver) {
         this.client = client;
         this.rUBERnSystem = rUBERnSystem;
         this.invoice = invoice;

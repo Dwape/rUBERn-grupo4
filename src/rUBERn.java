@@ -1,7 +1,3 @@
-import Exceptions.NoAvailableDriverExc;
-
-import java.util.ArrayList;
-
 /**
  * Created by Gianni on 10/10/2016.
  */
@@ -26,7 +22,7 @@ public class rUBERn {
         rUBERnSystem.addDriver(driver1);
         rUBERnSystem.addDriver(driver2);
 
-        MainMenu mainMenu = new MainMenu(new Data(new NoClient(),rUBERnSystem,invoice,new NoDriver()));
+        MainMenu mainMenu = new MainMenu(new MainData(new NoClient(),rUBERnSystem,invoice,new NoDriver()));
     }
 
 
