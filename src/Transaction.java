@@ -25,7 +25,7 @@ public class Transaction {
 
         date = date.now();
         DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy HH:mm:ss");
-        String dateString = formatter.print(date);
+        dateString = formatter.print(date);
     }
 
     public String getTransactionIdentifier(){
