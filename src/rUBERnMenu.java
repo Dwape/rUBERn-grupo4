@@ -1,6 +1,5 @@
 
 public class rUBERnMenu {
-    MainSystem rUBERnSystem;
 
     public rUBERnMenu (MainData data){
         System.out.println("1.Register Driver");
@@ -15,6 +14,7 @@ public class rUBERnMenu {
                 new rUBERnMenu(data);
                 break;
             case 2:
+                data.getInvoice().print();
                 break;
             case 3:
                 new MainMenu(data);

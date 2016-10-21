@@ -24,12 +24,4 @@ public class rUBERn {
 
         MainMenu mainMenu = new MainMenu(new MainData(new NoClient(),rUBERnSystem,invoice,new NoDriver()));
     }
-
-
-    static public Client logIn(){
-        String name = Scanner.getString("Enter your name: ");
-        long creditCardNumber = Scanner.getLong("Enter your credit card number: ");
-        Client client = new Client(0,creditCardNumber);
-        return client;
-    }
 }
