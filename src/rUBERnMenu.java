@@ -1,11 +1,10 @@
 
-public class rUBERnMenu {
+public class rUBERnMenu extends Formulary{
+
+    private String title = "rUBERn Menu";
 
     public rUBERnMenu (MainData data){
-        System.out.println("1.Register Driver");
-        System.out.println("2.Print Invoice");
-        System.out.println("3.Back");
-        System.out.println("4.Exit");
+        show();
         int result = Scanner.getInt("Which option would you like to execute: ");
 
         switch (result){
@@ -87,5 +86,12 @@ public class rUBERnMenu {
             }
         }
         return schedule;
+    }
+
+    public void displayContent(){
+        System.out.println("1.Register Driver");
+        System.out.println("2.Print Invoice");
+        System.out.println("3.Back");
+        System.out.println("4.Exit");
     }
 }

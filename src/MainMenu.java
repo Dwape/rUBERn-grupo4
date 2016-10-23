@@ -3,15 +3,14 @@ import java.util.ArrayList;
 /**
  * Created by Gianni on 10/16/2016.
  */
-public class MainMenu {
+public class MainMenu extends Formulary{
     private ClientMenu clientMenu;
     private DriverMenu driverMenu;
 
+    private String title = "Main Menu";
+
     public MainMenu(MainData data){
-        System.out.println("1.Driver Options");
-        System.out.println("2.Client Options");
-        System.out.println("3.rUBERn Options");
-        System.out.println("4.Exit");
+        show();
         int option = Scanner.getInt("Which option would you like to execute: ");
 
         switch (option) {
@@ -49,6 +48,13 @@ public class MainMenu {
             driverList(data);
         }
         new DriverMenu(data);
+    }
+
+    public void displayContent(){
+        System.out.println("1.Driver Options");
+        System.out.println("2.Client Options");
+        System.out.println("3.rUBERn Options");
+        System.out.println("4.Exit");
     }
 
 }

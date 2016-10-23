@@ -3,16 +3,12 @@ import Exceptions.NoAvailableDriverExc;
 /**
  * Created by Gianni on 10/16/2016.
  */
-public class ClientMenu {
+public class ClientMenu extends Formulary{
+
+    private String title = "Client Menu";
 
     public ClientMenu(MainData data){
-        System.out.println("1.LogIn");
-        System.out.println("2.LogOut");
-        System.out.println("3.Call Driver");
-        System.out.println("4.Add Funds");
-        System.out.println("5.Check Funds");
-        System.out.println("6.Back");
-        System.out.println("7.Exit");
+        show();
         int option = Scanner.getInt("Which option would you like to execute: ");
 
         switch (option) {
@@ -90,5 +86,15 @@ public class ClientMenu {
             System.out.println("No available driver, please try again later");
             new ClientMenu(data);
         }
+    }
+
+    public void displayContent(){
+        System.out.println("1.LogIn");
+        System.out.println("2.LogOut");
+        System.out.println("3.Call Driver");
+        System.out.println("4.Add Funds");
+        System.out.println("5.Check Funds");
+        System.out.println("6.Back");
+        System.out.println("7.Exit");
     }
 }

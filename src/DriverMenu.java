@@ -1,12 +1,12 @@
 /**
  * Created by Gianni on 10/16/2016.
  */
-public class DriverMenu {
+public class DriverMenu extends Formulary{
+
+    private String title = "Driver Menu";
 
     public DriverMenu(MainData data){
-        System.out.println("1.Finish Trip");
-        System.out.println("2.Back");
-        System.out.println("3.Exit");
+        show();
         int option = Scanner.getInt("Which option would you like to execute: ");
 
         switch (option) {
@@ -35,5 +35,11 @@ public class DriverMenu {
             System.out.println("You are not currently on a trip");
             new DriverMenu(data);
         }
+    }
+
+    public void displayContent(){
+        System.out.println("1.Finish Trip");
+        System.out.println("2.Back");
+        System.out.println("3.Exit");
     }
 }
