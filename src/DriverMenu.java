@@ -1,7 +1,4 @@
-import Exceptions.CanNotWorkWhileOfflineExc;
-import Exceptions.DriverAlreadyOfflineExc;
-import Exceptions.DriverAlreadyOnlineExc;
-import Exceptions.DriverAlreadyWorkingExc;
+import Exceptions.*;
 
 /**
  * Created by Gianni on 10/16/2016.
@@ -70,12 +67,16 @@ public class DriverMenu extends Formulary{
 
     public void goOnline(){
         try {
+            data.getDriver().goOffline();
+        }catch (DriverAlreadyOfflineExc t){
             data.getDriver().goOnline();
             System.out.println("You are now online");
         }catch (DriverAlreadyWorkingExc t){
             System.out.println("Can not go online, you are working");
         }catch (DriverAlreadyOnlineExc t){
             System.out.println("Your are already online");
+        }catch (CanNotGoOfflineWhileWorkingExc t){
+            System.out.println("Your are now working, you can not go online");
         }
 
     }

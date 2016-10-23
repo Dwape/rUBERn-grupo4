@@ -1,3 +1,4 @@
+import Exceptions.CanNotGoOfflineWhileWorkingExc;
 import Exceptions.CanNotWorkWhileOfflineExc;
 import Exceptions.DriverAlreadyWorkingExc;
 
@@ -11,7 +12,7 @@ public class Working extends StateDriver {
     }
 
     public void goOffline(){
-        throw new CanNotWorkWhileOfflineExc();
+        throw new CanNotGoOfflineWhileWorkingExc();
     }
 
     public void goToWork(){
