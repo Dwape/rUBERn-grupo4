@@ -1,44 +1,46 @@
 import Exceptions.NoAvailableDriverExc;
+import Exceptions.NoClientLoggedExc;
 
 /**
  * Created by Gianni on 10/16/2016.
  */
 public class ClientMenu extends Formulary{
 
-    private String title = "Client Menu";
+    private String title = "****************Client Menu****************";
 
     public ClientMenu(MainData data){
+
+        try{
+            data.getClient().getCreditCardNumber();
+        }catch (NoClientLoggedExc exc){
+            data.setClient(logIn());
+        }
         show();
         int option = Scanner.getInt("Which option would you like to execute: ");
 
         switch (option) {
             case 1:
-                data.setClient(logIn());
-                System.out.println("LogIn successful");
-                new ClientMenu(data);
-                break;
-            case 2:
-                data.setClient(new NoClient());
-                System.out.println("LogOut successful");
-                new ClientMenu(data);
-                break;
-            case 3:
                 callDriver(data);
                 break;
-            case 4:
+            case 2:
                 double founds = Scanner.getDouble("How much money would you like to add? ");
                 data.getClient().addFunds(founds);
                 System.out.println("Funds added successfully");
                 new ClientMenu(data);
                 break;
-            case 5:
+            case 3:
                 System.out.println("Your balance is: $"+data.getClient().getBalance());
                 new ClientMenu(data);
                 break;
-            case 6:
+            case 4:
+                data.setClient(new NoClient());
+                System.out.println("LogOut successful");
                 new MainMenu(data);
                 break;
-            case 7:
+            case 5:
+                new MainMenu(data);
+                break;
+            case 6:
                 System.exit(0);
                 break;
             default:
@@ -88,13 +90,16 @@ public class ClientMenu extends Formulary{
         }
     }
 
+    public String getTitle(){
+        return title;
+    }
+
     public void displayContent(){
-        System.out.println("1.LogIn");
-        System.out.println("2.LogOut");
-        System.out.println("3.Call Driver");
-        System.out.println("4.Add Funds");
-        System.out.println("5.Check Funds");
-        System.out.println("6.Back");
-        System.out.println("7.Exit");
+        System.out.println("1.Call Driver");
+        System.out.println("2.Add Funds");
+        System.out.println("3.Check Funds");
+        System.out.println("4.LogOut");
+        System.out.println("5.Back");
+        System.out.println("6.Exit");
     }
 }

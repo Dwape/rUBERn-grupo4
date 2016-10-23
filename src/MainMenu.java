@@ -7,7 +7,7 @@ public class MainMenu extends Formulary{
     private ClientMenu clientMenu;
     private DriverMenu driverMenu;
 
-    private String title = "Main Menu";
+    private String title = "****************Main Menu****************";
 
     public MainMenu(MainData data){
         show();
@@ -48,6 +48,10 @@ public class MainMenu extends Formulary{
             driverList(data);
         }
         new DriverMenu(data);
+    }
+
+    public String getTitle(){
+        return title;
     }
 
     public void displayContent(){

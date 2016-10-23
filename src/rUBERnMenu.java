@@ -1,7 +1,7 @@
 
 public class rUBERnMenu extends Formulary{
 
-    private String title = "rUBERn Menu";
+    private String title = "****************rUBERn Menu****************";
 
     public rUBERnMenu (MainData data){
         show();
@@ -86,6 +86,10 @@ public class rUBERnMenu extends Formulary{
             }
         }
         return schedule;
+    }
+
+    public String getTitle(){
+        return title;
     }
 
     public void displayContent(){

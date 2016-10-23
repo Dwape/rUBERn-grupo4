@@ -3,7 +3,7 @@
  */
 public class DriverMenu extends Formulary{
 
-    private String title = "Driver Menu";
+    private String title = "****************Driver Menu****************";
 
     public DriverMenu(MainData data){
         show();
@@ -35,6 +35,10 @@ public class DriverMenu extends Formulary{
             System.out.println("You are not currently on a trip");
             new DriverMenu(data);
         }
+    }
+
+    public String getTitle(){
+        return title;
     }
 
     public void displayContent(){

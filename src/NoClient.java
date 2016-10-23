@@ -25,5 +25,4 @@ public class NoClient extends AbstractClient{   //todos los metodos iguales >> m
     public void changeStatus(){
         throw new NoClientLoggedExc();
     }
-
 }
