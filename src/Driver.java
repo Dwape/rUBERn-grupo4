@@ -1,3 +1,4 @@
+import Exceptions.CanNotWorkWhileOfflineExc;
 import org.joda.time.DateTime;
 
 public class Driver extends AbstractDriver {
@@ -6,19 +7,17 @@ public class Driver extends AbstractDriver {
         super(car, name, schedule);
     }
 
-    @Override
     public void arrived(){
         aCar.getCoordinates().setCoordinates(finishCoordinates.getValueX(),finishCoordinates.getValueY());
         finishCoordinates = null;
-        isTravelling=false;
+        goOnline();
     }
 
-    @Override
     public boolean requestDriver(Coordinates finishCoordinates){
         char result = Scanner.getChar(name + ", do you accept the request? (Y/N)");
         switch (result){
             case 'Y':
-                isTravelling = true;
+                goToWork();
                 this.finishCoordinates=finishCoordinates;
                 return true;
             case 'N':
@@ -30,43 +29,46 @@ public class Driver extends AbstractDriver {
 
     }
 
-    @Override
-    public Coordinates getCoordinates() {
-        return aCar.getCoordinates();
-    }
-
-    @Override
-    public void addFunds(double amount){
-        balance+=amount;
-    }
-
-    @Override
-    public boolean checkAvailability(){ //si esta disponible y durante su horario de trabajo
-        if(!isTravelling) {
-            DateTime today = DateTime.now();
-            int now = today.getMillisOfDay();
-            int dayOfTheWeek = DateTime.now().getDayOfWeek();
-
-            int[][] hoursWork = schedule.getWorkWeek();
-
-            return (hoursWork[dayOfTheWeek- 1][0] < now && hoursWork[dayOfTheWeek - 1][1]> now);
-        }else{
+    public boolean checkAvailability(){
+        try {
+            stateDriver.goToWork();
+            stateDriver.goOnline();
+            return true;
+        }catch (CanNotWorkWhileOfflineExc t){
             return false;
         }
     }
 
-    @Override
+    public Coordinates getCoordinates() {
+        return aCar.getCoordinates();
+    }
+
+    public void addFunds(double amount){
+        balance+=amount;
+    }
+
     public Car getCar(){
         return aCar;
     }
 
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
-    public boolean isTravelling() {
-        return isTravelling;
+
+    public void goOnline(){
+        stateDriver.goOnline();
+    }
+
+    public void goOffline(){
+        stateDriver.goOffline();
+    }
+
+    public void goToWork(){
+        stateDriver.goToWork();
+    }
+
+    public void setState(StateDriver stateDriver){
+        this.stateDriver = stateDriver;
     }
 }

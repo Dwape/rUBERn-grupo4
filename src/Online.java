@@ -1,7 +1,20 @@
+import Exceptions.DriverAlreadyOnlineExc;
 
+public class Online extends StateDriver {
+    public Online(AbstractDriver driver){
+        super(driver);
+    }
 
-/**
- * Created by Oscar on 23/10/2016.
- */
-public class Online implements StateDriver {
+    public void goOnline(){
+        throw new DriverAlreadyOnlineExc();
+    }
+
+    public void goOffline(){
+        driver.setState(new Offline(driver));
+    }
+
+    public void goToWork(){
+        driver.setState(new Working(driver));
+    }
+
 }

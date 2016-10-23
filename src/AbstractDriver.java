@@ -1,17 +1,16 @@
-import org.joda.time.DateTime;
-
 public abstract class AbstractDriver {
     Car aCar;
     double balance=0;
     String name;
-    boolean isTravelling;
     Schedule schedule;
     Coordinates finishCoordinates;
+    StateDriver stateDriver;
 
     public AbstractDriver(Car car,String name, Schedule schedule) {
         this.aCar = car;
         this.name = name;
         this.schedule=schedule;
+        stateDriver = new Offline(this);
     }
 
     public AbstractDriver(){}
@@ -30,5 +29,12 @@ public abstract class AbstractDriver {
 
     public abstract String getName();
 
-    public abstract boolean isTravelling();
+    public abstract void goOnline();
+
+    public abstract void goOffline();
+
+    public abstract void goToWork();
+
+    public abstract void setState(StateDriver stateDriver);
+
 }

@@ -1,7 +1,20 @@
+import Exceptions.CanNotWorkWhileOfflineExc;
+import Exceptions.DriverAlreadyWorkingExc;
 
+public class Working extends StateDriver {
+    public Working(AbstractDriver driver){
+        super(driver);
+    }
 
-/**
- * Created by Oscar on 23/10/2016.
- */
-public class Working implements StateDriver {
+    public void goOnline(){
+        driver.setState(new Online(driver));
+    }
+
+    public void goOffline(){
+        throw new CanNotWorkWhileOfflineExc();
+    }
+
+    public void goToWork(){
+        throw new DriverAlreadyWorkingExc();
+    }
 }
