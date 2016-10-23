@@ -6,7 +6,6 @@ public abstract class Formulary {
     String title;
 
     public void show(){
-        clearScreen();
         displayTitle();
         drawLine();
         this.displayContent();
@@ -36,7 +35,7 @@ public abstract class Formulary {
     }
 
     public void displayTitle(){
-        System.out.println(this.getTitle());
+        System.out.println("**************** " + this.getTitle() + " ****************");
     }
 
     public void drawLine(){

@@ -2,14 +2,12 @@ public abstract class AbstractDriver {
     Car aCar;
     double balance=0;
     String name;
-    Schedule schedule;
     Coordinates finishCoordinates;
     StateDriver stateDriver;
 
-    public AbstractDriver(Car car,String name, Schedule schedule) {
+    public AbstractDriver(Car car,String name) {
         this.aCar = car;
         this.name = name;
-        this.schedule=schedule;
         stateDriver = new Offline(this);
     }
 

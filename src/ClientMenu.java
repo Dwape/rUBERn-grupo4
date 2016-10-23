@@ -6,7 +6,7 @@ import Exceptions.NoClientLoggedExc;
  */
 public class ClientMenu extends Formulary{
 
-    private String title = "****************Client Menu****************";
+    private String title = "Client Menu";
 
     public ClientMenu(MainData data){
 
@@ -58,6 +58,10 @@ public class ClientMenu extends Formulary{
     }
 
     private void callDriver(MainData data){
+        if(data.getClient().getStatus()){
+            System.out.println("Already travelling");
+            new ClientMenu(data);
+        }
         long StartX = Scanner.getLong("Enter current X coordinates: ");
         long StartY = Scanner.getLong("Enter current Y coordinates: ");
         Coordinates start = new Coordinates(StartX, StartY);

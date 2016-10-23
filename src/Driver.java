@@ -3,8 +3,8 @@ import org.joda.time.DateTime;
 
 public class Driver extends AbstractDriver {
 
-    public Driver(Car car,String name, Schedule schedule) {
-        super(car, name, schedule);
+    public Driver(Car car,String name) {
+        super(car, name);
     }
 
     public void arrived(){

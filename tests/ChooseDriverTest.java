@@ -39,9 +39,9 @@ public class ChooseDriverTest {
         schedule2.setHoursPerDay("04:00", "22:00", "saturday");
         schedule2.setHoursPerDay("04:00", "22:00", "sunday");
 
-        Driver driver1 = new Driver(car1, "Pedro", schedule1);
-        Driver driver2 = new Driver(car2, "Juan", schedule2);
-        Driver driver3 = new Driver(car3, "Manuel", schedule2);
+        Driver driver1 = new Driver(car1, "Pedro");
+        Driver driver2 = new Driver(car2, "Juan");
+        Driver driver3 = new Driver(car3, "Manuel");
 
         MainSystem system = new MainSystem();
         system.addDriver(driver1);
@@ -75,9 +75,9 @@ public class ChooseDriverTest {
         schedule2.setHoursPerDay("04:00", "08:00", "thursday");
         schedule2.setHoursPerDay("04:00", "08:00", "friday");
 
-        Driver driver1 = new Driver(car1, "Pedro", schedule1);
-        Driver driver2 = new Driver(car2, "Juan", schedule2);
-        Driver driver3 = new Driver(car3, "Manuel", schedule2);
+        Driver driver1 = new Driver(car1, "Pedro");
+        Driver driver2 = new Driver(car2, "Juan");
+        Driver driver3 = new Driver(car3, "Manuel");
 
         MainSystem system = new MainSystem();
         system.addDriver(driver1);

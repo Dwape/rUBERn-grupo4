@@ -1,7 +1,7 @@
 
 public class rUBERnMenu extends Formulary{
 
-    private String title = "****************rUBERn Menu****************";
+    private String title = "rUBERn Menu";
 
     public rUBERnMenu (MainData data){
         show();
@@ -14,6 +14,7 @@ public class rUBERnMenu extends Formulary{
                 break;
             case 2:
                 data.getInvoice().print();
+                new rUBERnMenu(data);
                 break;
             case 3:
                 new MainMenu(data);
@@ -60,10 +61,11 @@ public class rUBERnMenu extends Formulary{
         Coordinates coordinates = new Coordinates(coordinateX,coordinateY);
         System.out.println();
         Car car = new Car(spaceCar,category,coordinates);
-        return new Driver(car,name,createSchedule());
+        System.out.println("Driver registered successfully");
+        return new Driver(car,name);
     }
 
-    private Schedule createSchedule() {
+   /* private Schedule createSchedule() {
         Schedule schedule = new Schedule();
         String[] daysOfTheWeek = new String[7];
         daysOfTheWeek[0] = "monday";
@@ -86,7 +88,7 @@ public class rUBERnMenu extends Formulary{
             }
         }
         return schedule;
-    }
+    }*/
 
     public String getTitle(){
         return title;

@@ -19,7 +19,7 @@ public class DriverTest {
         schedule1.setHoursPerDay("04:00", "08:00", "thursday");
         schedule1.setHoursPerDay("04:00", "08:00", "friday");
 
-        Driver driver1 = new Driver(car1, "Pedro", schedule1);
+        Driver driver1 = new Driver(car1, "Pedro");
 
         MainSystem system = new MainSystem();
         system.addDriver(driver1);
