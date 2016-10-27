@@ -5,6 +5,7 @@ public abstract class AbstractDriver {
     StateDriver stateDriver;
     boolean availability;
     CreditCard creditCard;
+    boolean testing;
 
     public AbstractDriver(Car car,String name, long creditCardNumber) {
         this.aCar = car;
