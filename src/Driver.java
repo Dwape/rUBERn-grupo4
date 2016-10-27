@@ -53,7 +53,6 @@ public class Driver extends AbstractDriver {
         return name;
     }
 
-
     public void goOnline(){
         stateDriver.goOnline();
     }
@@ -68,5 +67,9 @@ public class Driver extends AbstractDriver {
 
     public void setState(StateDriver stateDriver){
         this.stateDriver = stateDriver;
+    }
+
+    public void stopWorking(){
+        stateDriver.stopWorking();
     }
 }

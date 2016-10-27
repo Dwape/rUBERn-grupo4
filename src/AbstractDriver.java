@@ -37,6 +37,8 @@ public abstract class AbstractDriver {
 
     public abstract void goToWork();
 
+    public abstract void stopWorking();
+
     public abstract void setState(StateDriver stateDriver);
 
 }

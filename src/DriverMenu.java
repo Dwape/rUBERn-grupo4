@@ -40,16 +40,13 @@ public class DriverMenu extends Formulary{
 
     private void finishTrip(){
         try {
-            data.getDriver().goToWork();
-            data.getDriver().goOnline();
-            System.out.println("You are not currently on a trip");
-        }catch (DriverAlreadyWorkingExc t){
-            data.getDriver().arrived();
+            data.getDriver().stopWorking();
+            data.getDriver().arrived();//puede estar dentro del metodo stopWorking
             data.getClient().changeStatus();
             System.out.println("Your trip has finished successfully");
             data.getrUBERnSystem().transaction(data.getClient(), data.getDriver(), data.startCoordinates, data.finishCoordinates, data.getInvoice());
-        }catch (CanNotWorkWhileOfflineExc t){
-            System.out.println("Your are not online");
+        }catch (DriverNotWorkingExc t){
+            System.out.println("Your are not working");
         }
     }
 

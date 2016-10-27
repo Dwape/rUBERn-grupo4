@@ -49,4 +49,8 @@ public class NoDriver extends AbstractDriver{
     public void setAvailability(boolean bool){
         throw new NoAvailableDriverExc();
     }
+
+    public void stopWorking(){
+        throw new NoAvailableDriverExc();
+    }
 }
