@@ -1,13 +1,7 @@
 import Exceptions.NoAvailableDriverExc;
-import org.joda.time.DateTime;
-import org.joda.time.LocalTime;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-import java.util.ArrayList;
 
-/**
- * Created by Dwape on 10/10/16.
- */
 public class ChooseDriverTest {
 
     @Test
@@ -21,9 +15,9 @@ public class ChooseDriverTest {
         Car car2 = new Car(4, basic, coord1);
         Car car3 = new Car(4, basic, coord2);
 
-        Driver driver1 = new Driver(car1, "Pedro");
-        Driver driver2 = new Driver(car2, "Juan");
-        Driver driver3 = new Driver(car3, "Manuel");
+        Driver driver1 = new Driver(car1, "Pedro", 12231223);
+        Driver driver2 = new Driver(car2, "Juan", 46372643);
+        Driver driver3 = new Driver(car3, "Manuel", 57324234);
 
         driver1.isTesting();
         driver2.isTesting();
@@ -32,7 +26,6 @@ public class ChooseDriverTest {
         driver2.goOnline();
 
         MainSystem system = new MainSystem();
-
         system.addDriver(driver1);
         system.addDriver(driver2);
         system.addDriver(driver3);
@@ -56,17 +49,13 @@ public class ChooseDriverTest {
         Car car2 = new Car(4, basic, coord1);
         Car car3 = new Car(4, basic, coord2);
 
-        Schedule schedule1 = new Schedule();
-        schedule1.setHoursPerDay("04:00", "08:00", "thursday");
-        schedule1.setHoursPerDay("04:00", "08:00", "friday");
+        Driver driver1 = new Driver(car1, "Pedro", 34231123);
+        Driver driver2 = new Driver(car2, "Juan", 57382734);
+        Driver driver3 = new Driver(car3, "Manuel", 56432123);
 
-        Schedule schedule2 = new Schedule();
-        schedule2.setHoursPerDay("04:00", "08:00", "thursday");
-        schedule2.setHoursPerDay("04:00", "08:00", "friday");
-
-        Driver driver1 = new Driver(car1, "Pedro");
-        Driver driver2 = new Driver(car2, "Juan");
-        Driver driver3 = new Driver(car3, "Manuel");
+        driver1.isTesting();
+        driver2.isTesting();
+        driver3.isTesting();
 
         MainSystem system = new MainSystem();
         system.addDriver(driver1);

@@ -19,7 +19,7 @@ public class CreditCard {
 
     public void addFunds(double balance){
         if (balance>0){
-            this.balance = balance;
+            this.balance += balance;
         }else
             throw new InvalidAmountExc();
     }
