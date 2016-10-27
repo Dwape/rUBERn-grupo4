@@ -5,6 +5,7 @@ public abstract class AbstractDriver {
     Coordinates finishCoordinates;
     StateDriver stateDriver;
     boolean availability;
+    boolean testing;
 
     public AbstractDriver(Car car,String name) {
         this.aCar = car;

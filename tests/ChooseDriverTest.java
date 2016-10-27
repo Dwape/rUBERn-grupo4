@@ -21,29 +21,18 @@ public class ChooseDriverTest {
         Car car2 = new Car(4, basic, coord1);
         Car car3 = new Car(4, basic, coord2);
 
-        LocalTime hora = new LocalTime(7, 0, 0, 0);
-        Schedule schedule1 = new Schedule();
-        schedule1.setHoursPerDay("04:00", "08:00", "monday");
-        schedule1.setHoursPerDay("04:00", "08:00", "tuesday");
-        schedule1.setHoursPerDay("04:00", "08:00", "wednesday");
-        schedule1.setHoursPerDay("04:00", "08:00", "thursday");
-        schedule1.setHoursPerDay("04:00", "08:00", "friday");
-        schedule1.setHoursPerDay("04:00", "08:00", "saturday");
-        schedule1.setHoursPerDay("04:00", "08:00", "sunday");
-        Schedule schedule2 = new Schedule();
-        schedule2.setHoursPerDay("04:00", "22:00", "monday");
-        schedule2.setHoursPerDay("04:00", "22:00", "tuesday");
-        schedule2.setHoursPerDay("04:00", "20:00", "wednesday");
-        schedule2.setHoursPerDay("04:00", "22:00", "thursday");
-        schedule2.setHoursPerDay("04:00", "22:00", "friday");
-        schedule2.setHoursPerDay("04:00", "22:00", "saturday");
-        schedule2.setHoursPerDay("04:00", "22:00", "sunday");
-
         Driver driver1 = new Driver(car1, "Pedro");
         Driver driver2 = new Driver(car2, "Juan");
         Driver driver3 = new Driver(car3, "Manuel");
 
+        driver1.isTesting();
+        driver2.isTesting();
+        driver3.isTesting();
+
+        driver2.goOnline();
+
         MainSystem system = new MainSystem();
+
         system.addDriver(driver1);
         system.addDriver(driver2);
         system.addDriver(driver3);

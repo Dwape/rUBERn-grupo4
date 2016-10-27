@@ -14,6 +14,9 @@ public class Driver extends AbstractDriver {
     }
 
     public boolean requestDriver(Coordinates finishCoordinates){
+        if (testing){ //para testear
+            return true;
+        }
         char result = Scanner.getChar(name + ", do you accept the request? (Y/N)");
         switch (result){
             case 'Y':
@@ -71,5 +74,9 @@ public class Driver extends AbstractDriver {
 
     public void stopWorking(){
         stateDriver.stopWorking();
+    }
+
+    public void isTesting(){ //para test
+        testing = true;
     }
 }
