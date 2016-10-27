@@ -1,8 +1,3 @@
-import Exceptions.InvalidAmountExc;
-
-/**
- * Created by Gianni on 10/9/2016.
- */
 public class Client extends AbstractClient{
 
     public Client(double balance, long creditCardNumber) {
@@ -10,21 +5,15 @@ public class Client extends AbstractClient{
     }
 
     public void addFunds(double amount){
-        if (amount>0){
-            balance+=amount;
-        }else
-            throw new InvalidAmountExc();
+        creditCard.addFunds(amount);
     }
 
     public void spend(double amount){
-        if (amount>0&&amount<=balance){
-            balance-=amount;
-        }else
-            throw new InvalidAmountExc();
+        creditCard.spend(amount);
     }
 
     public long getCreditCardNumber() {
-        return creditCardNumber;
+        return creditCard.getCreditCardNumber();
     }
 
     public boolean getStatus(){
@@ -32,7 +21,7 @@ public class Client extends AbstractClient{
     }
 
     public double getBalance(){
-        return balance;
+        return creditCard.getBalance();
     }
 
     public void changeStatus(){

@@ -1,16 +1,7 @@
-import Exceptions.CanNotWorkWhileOfflineExc;
-import org.joda.time.DateTime;
-
 public class Driver extends AbstractDriver {
 
-    public Driver(Car car,String name) {
-        super(car, name);
-    }
-
-    public void arrived(){
-        aCar.getCoordinates().setCoordinates(finishCoordinates.getValueX(),finishCoordinates.getValueY());
-        finishCoordinates = null;
-        goOnline();
+    public Driver(Car car,String name, long creditCardNumber) {
+        super(car, name, creditCardNumber);
     }
 
     public boolean requestDriver(Coordinates finishCoordinates){
@@ -29,12 +20,20 @@ public class Driver extends AbstractDriver {
 
     }
 
+    public Coordinates getFinishCoordinates(){
+        return finishCoordinates;
+    }
+
+    public void resetFinishCoordinates(){
+        finishCoordinates = null;
+    }
+
     public boolean getAvailability(){
         return availability;
     }
 
-    public void setAvailability(boolean bool){
-        availability= bool;
+    public void changeAvailability(){
+        availability= !availability;
     }
 
     public Coordinates getCoordinates() {
@@ -42,7 +41,7 @@ public class Driver extends AbstractDriver {
     }
 
     public void addFunds(double amount){
-        balance+=amount;
+        creditCard.addFunds(amount);
     }
 
     public Car getCar(){
@@ -71,5 +70,9 @@ public class Driver extends AbstractDriver {
 
     public void stopWorking(){
         stateDriver.stopWorking();
+    }
+
+    public double getBalance(){
+        return creditCard.getBalance();
     }
 }

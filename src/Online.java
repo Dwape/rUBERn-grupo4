@@ -12,12 +12,12 @@ public class Online extends StateDriver {
 
     public void goOffline(){
         driver.setState(new Offline(driver));
-        driver.setAvailability(false);
+        driver.changeAvailability();
     }
 
     public void goToWork(){
         driver.setState(new Working(driver));
-        driver.setAvailability(false);
+        driver.changeAvailability();
     }
 
     public void stopWorking(){

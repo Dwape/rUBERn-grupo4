@@ -2,10 +2,6 @@ import Exceptions.NoAvailableDriverExc;
 
 public class NoDriver extends AbstractDriver{
 
-    public void arrived(){
-        throw new NoAvailableDriverExc();
-    }
-
     public boolean requestDriver(Coordinates finishCoordinates){
         throw new NoAvailableDriverExc();
     }
@@ -46,11 +42,23 @@ public class NoDriver extends AbstractDriver{
 
     public boolean getAvailability(){throw new NoAvailableDriverExc();}
 
-    public void setAvailability(boolean bool){
+    public void changeAvailability(){
         throw new NoAvailableDriverExc();
     }
 
     public void stopWorking(){
+        throw new NoAvailableDriverExc();
+    }
+
+    public Coordinates getFinishCoordinates(){
+        throw new NoAvailableDriverExc();
+    }
+
+    public void resetFinishCoordinates(){
+        throw new NoAvailableDriverExc();
+    }
+
+    public double getBalance(){
         throw new NoAvailableDriverExc();
     }
 }

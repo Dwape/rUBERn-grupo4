@@ -20,7 +20,9 @@ public class Working extends StateDriver {
     }
 
     public void stopWorking(){
+        driver.getCar().getCoordinates().setCoordinates(driver.getFinishCoordinates().getValueX(),driver.getFinishCoordinates().getValueY());
+        driver.resetFinishCoordinates();
         driver.setState(new Online(driver));
-        driver.setAvailability(true);
+        driver.changeAvailability();
     }
 }

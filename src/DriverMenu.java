@@ -26,9 +26,12 @@ public class DriverMenu extends Formulary{
                 new DriverMenu(data);
                 break;
             case 4:
+                System.out.println(data.getDriver().getBalance());
+                new DriverMenu(data);
+            case 5:
                 new MainMenu(data);
                 break;
-            case 5:
+            case 6:
                 System.exit(0);
                 break;
             default:
@@ -41,7 +44,6 @@ public class DriverMenu extends Formulary{
     private void finishTrip(){
         try {
             data.getDriver().stopWorking();
-            data.getDriver().arrived();//puede estar dentro del metodo stopWorking
             data.getClient().changeStatus();
             System.out.println("Your trip has finished successfully");
             data.getrUBERnSystem().transaction(data.getClient(), data.getDriver(), data.startCoordinates, data.finishCoordinates, data.getInvoice());
@@ -58,8 +60,9 @@ public class DriverMenu extends Formulary{
         System.out.println("1.Finish Trip");
         System.out.println("2.Go Online");
         System.out.println("3.Go Offline");
-        System.out.println("4.Back");
-        System.out.println("5.Exit");
+        System.out.println("4.Check Funds");
+        System.out.println("5.Back");
+        System.out.println("6.Exit");
     }
 
     public void goOnline(){

@@ -8,7 +8,7 @@ public class Offline extends StateDriver {
     }
     public void goOnline(){
         driver.setState(new Online(driver));
-        driver.setAvailability(true);
+        driver.changeAvailability();
     }
 
     public void goOffline(){

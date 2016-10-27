@@ -58,11 +58,12 @@ public class rUBERnMenu extends Formulary{
         System.out.println("Please enter your coordinates");
         long coordinateX = Scanner.getLong("Enter your X coordinate: ");
         long coordinateY = Scanner.getLong("Enter your y coordinate: ");
+        long creditCard = Scanner.getLong("Enter your credit card number: ");
         Coordinates coordinates = new Coordinates(coordinateX,coordinateY);
         System.out.println();
         Car car = new Car(spaceCar,category,coordinates);
         System.out.println("Driver registered successfully");
-        return new Driver(car,name);
+        return new Driver(car,name, creditCard);
     }
 
    /* private Schedule createSchedule() {

@@ -1,12 +1,10 @@
 
 public abstract class AbstractClient  {
-    public double balance;
-    public long creditCardNumber;
+    CreditCard creditCard;
     public boolean isTraveling;
 
     public AbstractClient(double balance, long creditCardNumber) {
-        this.balance = balance;
-        this.creditCardNumber = creditCardNumber;
+        creditCard = new CreditCard(balance,creditCardNumber);
     }
 
     public AbstractClient(){}   //Doble constructor para inicializar NoClient sin inventar valores

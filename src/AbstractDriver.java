@@ -1,21 +1,20 @@
 public abstract class AbstractDriver {
     Car aCar;
-    double balance=0;
     String name;
     Coordinates finishCoordinates;
     StateDriver stateDriver;
     boolean availability;
+    CreditCard creditCard;
 
-    public AbstractDriver(Car car,String name) {
+    public AbstractDriver(Car car,String name, long creditCardNumber) {
         this.aCar = car;
         this.name = name;
         stateDriver = new Offline(this);
         availability = false;
+        creditCard = new CreditCard(0,creditCardNumber);
     }
 
     public AbstractDriver(){}
-
-    public abstract void arrived();
 
     public abstract boolean requestDriver(Coordinates finishCoordinates);
 
@@ -25,7 +24,7 @@ public abstract class AbstractDriver {
 
     public abstract boolean getAvailability();
 
-    public abstract void setAvailability(boolean bool);
+    public abstract void changeAvailability();
 
     public abstract Car getCar();
 
@@ -41,4 +40,9 @@ public abstract class AbstractDriver {
 
     public abstract void setState(StateDriver stateDriver);
 
+    public abstract Coordinates getFinishCoordinates();
+
+    public abstract void resetFinishCoordinates ();
+
+    public abstract double getBalance();
 }
