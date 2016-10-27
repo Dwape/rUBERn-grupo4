@@ -4,11 +4,13 @@ public abstract class AbstractDriver {
     String name;
     Coordinates finishCoordinates;
     StateDriver stateDriver;
+    boolean availability;
 
     public AbstractDriver(Car car,String name) {
         this.aCar = car;
         this.name = name;
         stateDriver = new Offline(this);
+        availability = false;
     }
 
     public AbstractDriver(){}
@@ -21,7 +23,9 @@ public abstract class AbstractDriver {
 
     public abstract void addFunds(double amount);
 
-    public abstract boolean checkAvailability();
+    public abstract boolean getAvailability();
+
+    public abstract void setAvailability(boolean bool);
 
     public abstract Car getCar();
 

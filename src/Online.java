@@ -1,4 +1,5 @@
 import Exceptions.DriverAlreadyOnlineExc;
+import Exceptions.DriverNotWorkingExc;
 
 public class Online extends StateDriver {
     public Online(AbstractDriver driver){
@@ -11,10 +12,15 @@ public class Online extends StateDriver {
 
     public void goOffline(){
         driver.setState(new Offline(driver));
+        driver.setAvailability(false);
     }
 
     public void goToWork(){
         driver.setState(new Working(driver));
+        driver.setAvailability(false);
     }
 
+    public void stopWorking(){
+        throw new DriverNotWorkingExc();
+    }
 }

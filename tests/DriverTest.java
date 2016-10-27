@@ -24,7 +24,7 @@ public class DriverTest {
         MainSystem system = new MainSystem();
         system.addDriver(driver1);
 
-        boolean available = driver1.checkAvailability();
+        boolean available = driver1.getAvailability();
 
         assertEquals(false, available);
     }

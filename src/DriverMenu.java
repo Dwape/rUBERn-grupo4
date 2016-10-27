@@ -67,12 +67,10 @@ public class DriverMenu extends Formulary{
 
     public void goOnline(){
         try {
-            data.getDriver().goOffline();
-        }catch (DriverAlreadyOfflineExc t){
             data.getDriver().goOnline();
             System.out.println("You are now online");
         }catch (DriverAlreadyWorkingExc t){
-            System.out.println("Can not go online, you are working");
+            System.out.println("Can not go online while you are working");
         }catch (DriverAlreadyOnlineExc t){
             System.out.println("Your are already online");
         }catch (CanNotGoOfflineWhileWorkingExc t){
@@ -89,6 +87,8 @@ public class DriverMenu extends Formulary{
             System.out.println("You are already offline");
         }catch (CanNotWorkWhileOfflineExc t){
             System.out.println("You can not go offline while working");
+        }catch (CanNotGoOfflineWhileWorkingExc t){
+            System.out.println("Your are working");
         }
     }
 }

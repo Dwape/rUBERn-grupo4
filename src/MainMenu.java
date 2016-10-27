@@ -7,7 +7,7 @@ public class MainMenu extends Formulary{
     private ClientMenu clientMenu;
     private DriverMenu driverMenu;
 
-    private String title = "****************Main Menu****************";
+    private String title = "Main Menu";
 
     public MainMenu(MainData data){
         show();

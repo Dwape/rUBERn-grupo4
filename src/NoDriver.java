@@ -27,9 +27,6 @@ public class NoDriver extends AbstractDriver{
         throw new NoAvailableDriverExc();
     }
 
-    public boolean isTravelling(){
-        throw new NoAvailableDriverExc();
-    }
 
     public void goOnline(){
         throw new NoAvailableDriverExc();
@@ -47,5 +44,9 @@ public class NoDriver extends AbstractDriver{
         throw new NoAvailableDriverExc();
     }
 
-    public boolean checkAvailability(){throw new NoAvailableDriverExc();}
+    public boolean getAvailability(){throw new NoAvailableDriverExc();}
+
+    public void setAvailability(boolean bool){
+        throw new NoAvailableDriverExc();
+    }
 }

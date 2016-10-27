@@ -7,4 +7,5 @@ public abstract class StateDriver {
     public abstract void goOnline();
     public abstract void goOffline();
     public abstract void goToWork();
+    public abstract void stopWorking();
 }

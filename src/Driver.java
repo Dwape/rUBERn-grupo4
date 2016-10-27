@@ -29,14 +29,12 @@ public class Driver extends AbstractDriver {
 
     }
 
-    public boolean checkAvailability(){
-        try {
-            stateDriver.goToWork();
-            stateDriver.goOnline();
-            return true;
-        }catch (CanNotWorkWhileOfflineExc t){
-            return false;
-        }
+    public boolean getAvailability(){
+        return availability;
+    }
+
+    public void setAvailability(boolean bool){
+        availability= bool;
     }
 
     public Coordinates getCoordinates() {

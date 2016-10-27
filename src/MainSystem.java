@@ -59,7 +59,7 @@ public class MainSystem {
         }
         int i2=0;
         while (i2<candidates.size()){
-            if (!candidates.get(i2).checkAvailability()){
+            if (!candidates.get(i2).getAvailability()){
                 candidates.remove(i2);
             }else{
                 i2++;

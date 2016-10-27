@@ -8,7 +8,7 @@ public class Working extends StateDriver {
     }
 
     public void goOnline(){
-        driver.setState(new Online(driver));
+        throw new CanNotGoOfflineWhileWorkingExc();
     }
 
     public void goOffline(){
@@ -17,5 +17,10 @@ public class Working extends StateDriver {
 
     public void goToWork(){
         throw new DriverAlreadyWorkingExc();
+    }
+
+    public void stopWorking(){
+        driver.setState(new Online(driver));
+        driver.setAvailability(true);
     }
 }
