@@ -1,3 +1,5 @@
+package DriverAndClient;
+
 import Exceptions.CanNotGoOfflineWhileWorkingExc;
 import Exceptions.CanNotWorkWhileOfflineExc;
 import Exceptions.DriverAlreadyWorkingExc;

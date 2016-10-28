@@ -1,6 +1,8 @@
+package DriverAndClient;
+
 import Exceptions.NoAvailableDriverExc;
 
-public class NoDriver extends AbstractDriver{
+public class NoDriver extends AbstractDriver {
 
     public boolean requestDriver(Coordinates finishCoordinates){
         throw new NoAvailableDriverExc();

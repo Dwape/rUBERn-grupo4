@@ -1,10 +1,16 @@
+package Menus;
+
+import DriverAndClient.Client;
+import DriverAndClient.Coordinates;
+import DriverAndClient.NoClient;
 import Exceptions.NoAvailableDriverExc;
 import Exceptions.NoClientLoggedExc;
+import Utility.Scanner;
 
 /**
  * Created by Gianni on 10/16/2016.
  */
-public class ClientMenu extends Formulary{
+public class ClientMenu extends Formulary {
 
     private String title = "Client Menu";
 
@@ -99,7 +105,7 @@ public class ClientMenu extends Formulary{
     }
 
     public void displayContent(){
-        System.out.println("1.Call Driver");
+        System.out.println("1.Driver");
         System.out.println("2.Add Funds");
         System.out.println("3.Check Funds");
         System.out.println("4.LogOut");

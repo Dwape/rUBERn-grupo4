@@ -1,5 +1,10 @@
+package Utility;
+
+import DriverAndClient.AbstractClient;
+import DriverAndClient.AbstractDriver;
+import DriverAndClient.Coordinates;
+import DriverAndClient.Driver;
 import Exceptions.NoAvailableDriverExc;
-import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 
@@ -25,9 +30,9 @@ public class MainSystem {
         aDriver.addFunds(driverBalance);
         aClient.spend(cost);
 
-        Transaction driverTransaction = new Transaction("Trip", "Driver charges money", aClient.getCreditCardNumber(), "A description", driverBalance);
+        Transaction driverTransaction = new Transaction("Trip", "DriverAndClient.Driver charges money", aClient.getCreditCardNumber(), "A description", driverBalance);
         Transaction uberTransaction = new Transaction("Trip", "Uber charges commission", aClient.getCreditCardNumber(), "A description", uberBalance);
-        Transaction clientTransaction = new Transaction("Trip", "Client pays for service", aClient.getCreditCardNumber(), "A description", clientBalance);
+        Transaction clientTransaction = new Transaction("Trip", "DriverAndClient.Client pays for service", aClient.getCreditCardNumber(), "A description", clientBalance);
 
         anInvoice.add(driverTransaction);
         anInvoice.add(uberTransaction);

@@ -1,3 +1,7 @@
+package DriverAndClient;
+
+import Categories.Category;
+
 /**
  * Created by Gianni on 10/9/2016.
  */

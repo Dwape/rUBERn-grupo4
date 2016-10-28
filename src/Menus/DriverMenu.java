@@ -1,9 +1,12 @@
+package Menus;
+
 import Exceptions.*;
+import Utility.Scanner;
 
 /**
  * Created by Gianni on 10/16/2016.
  */
-public class DriverMenu extends Formulary{
+public class DriverMenu extends Formulary {
     MainData data;
     private String title = "Driver Menu";
 

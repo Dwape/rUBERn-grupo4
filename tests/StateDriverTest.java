@@ -1,3 +1,7 @@
+import Categories.Basic;
+import DriverAndClient.Car;
+import DriverAndClient.Coordinates;
+import DriverAndClient.Driver;
 import Exceptions.CanNotWorkWhileOfflineExc;
 import Exceptions.DriverAlreadyOnlineExc;
 import org.junit.Test;

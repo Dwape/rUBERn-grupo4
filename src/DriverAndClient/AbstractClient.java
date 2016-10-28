@@ -1,3 +1,4 @@
+package DriverAndClient;
 
 public abstract class AbstractClient  {
     CreditCard creditCard;
@@ -7,7 +8,7 @@ public abstract class AbstractClient  {
         creditCard = new CreditCard(balance,creditCardNumber);
     }
 
-    public AbstractClient(){}   //Doble constructor para inicializar NoClient sin inventar valores
+    public AbstractClient(){}   //Doble constructor para inicializar DriverAndClient.NoClient sin inventar valores
 
     public abstract void addFunds(double amount);
 

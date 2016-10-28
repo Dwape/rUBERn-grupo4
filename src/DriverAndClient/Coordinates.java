@@ -1,3 +1,5 @@
+package DriverAndClient;
+
 public class Coordinates {
 
     private long valueX;

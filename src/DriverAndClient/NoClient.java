@@ -1,6 +1,8 @@
+package DriverAndClient;
+
 import Exceptions.NoClientLoggedExc;
 
-public class NoClient extends AbstractClient{   //todos los metodos iguales >> mejorar
+public class NoClient extends AbstractClient {   //todos los metodos iguales >> mejorar
 
     public void addFunds(double amount){
         throw new NoClientLoggedExc();

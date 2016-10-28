@@ -1,3 +1,8 @@
+import Categories.Basic;
+import DriverAndClient.Car;
+import DriverAndClient.Coordinates;
+import DriverAndClient.Driver;
+import Utility.MainSystem;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

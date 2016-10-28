@@ -1,3 +1,7 @@
+package DriverAndClient;
+
+import DriverAndClient.Online;
+import DriverAndClient.StateDriver;
 import Exceptions.CanNotWorkWhileOfflineExc;
 import Exceptions.DriverAlreadyOfflineExc;
 import Exceptions.DriverNotWorkingExc;

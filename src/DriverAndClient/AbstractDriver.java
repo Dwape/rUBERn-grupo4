@@ -1,3 +1,8 @@
+package DriverAndClient;
+
+import DriverAndClient.Offline;
+import DriverAndClient.StateDriver;
+
 public abstract class AbstractDriver {
     Car aCar;
     String name;
@@ -7,7 +12,7 @@ public abstract class AbstractDriver {
     CreditCard creditCard;
     boolean testing;
 
-    public AbstractDriver(Car car,String name, long creditCardNumber) {
+    public AbstractDriver(Car car, String name, long creditCardNumber) {
         this.aCar = car;
         this.name = name;
         stateDriver = new Offline(this);

@@ -1,4 +1,6 @@
-public class Client extends AbstractClient{
+package DriverAndClient;
+
+public class Client extends AbstractClient {
 
     public Client(double balance, long creditCardNumber) {
         super(balance, creditCardNumber);

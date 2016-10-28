@@ -1,5 +1,15 @@
+package Menus;
 
-public class rUBERnMenu extends Formulary{
+import Categories.Basic;
+import Categories.Category;
+import Categories.Premium;
+import Categories.Standard;
+import DriverAndClient.Car;
+import DriverAndClient.Coordinates;
+import DriverAndClient.Driver;
+import Utility.Scanner;
+
+public class rUBERnMenu extends Formulary {
 
     private String title = "rUBERn Menu";
 
@@ -66,8 +76,8 @@ public class rUBERnMenu extends Formulary{
         return new Driver(car,name, creditCard);
     }
 
-   /* private Schedule createSchedule() {
-        Schedule schedule = new Schedule();
+   /* private DriverAndClient.Schedule createSchedule() {
+        DriverAndClient.Schedule schedule = new DriverAndClient.Schedule();
         String[] daysOfTheWeek = new String[7];
         daysOfTheWeek[0] = "monday";
         daysOfTheWeek[1] = "tuesday";
@@ -80,8 +90,8 @@ public class rUBERnMenu extends Formulary{
         System.out.println("Please enter your working hours");
         while (i < 7) {
             try {
-                String iDay = Scanner.getString("Enter your starting hour on " + daysOfTheWeek[i] + " (HH:mm): ");
-                String fDay = Scanner.getString("Enter your finish hour on " + daysOfTheWeek[i] + " (HH:mm): ");
+                String iDay = Utility.Scanner.getString("Enter your starting hour on " + daysOfTheWeek[i] + " (HH:mm): ");
+                String fDay = Utility.Scanner.getString("Enter your finish hour on " + daysOfTheWeek[i] + " (HH:mm): ");
                 schedule.setHoursPerDay(iDay, fDay, daysOfTheWeek[i]);
                 i++;
             } catch (IllegalArgumentException exc) {
