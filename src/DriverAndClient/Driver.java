@@ -84,7 +84,12 @@ public class Driver extends AbstractDriver {
     public double getBalance() {
         return creditCard.getBalance();
     }
+
     public void isTesting(){ //para test
         testing = true;
+    }
+
+    public CreditCard getCreditCard() {
+        return creditCard;
     }
 }

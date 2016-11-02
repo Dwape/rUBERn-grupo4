@@ -17,6 +17,7 @@ public class MainMenu extends Formulary {
     public MainMenu(MainData data){
         show();
         int option = Scanner.getInt("Which option would you like to execute: ");
+        clearScreen();
 
         switch (option) {
             case 1:

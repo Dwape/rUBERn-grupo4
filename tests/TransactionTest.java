@@ -31,7 +31,7 @@ public class TransactionTest {
     @Test
     public void evaluateClientFunds(){
 
-        Client client1 = new Client (100, 14234234);
+        Client client1 = new Client (100, 14234234, "Gianni");
         client1.addFunds(50);
         client1.spend(25);
 

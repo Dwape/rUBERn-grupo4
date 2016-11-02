@@ -17,12 +17,13 @@ public class ClientMenu extends Formulary {
     public ClientMenu(MainData data){
 
         try{
-            data.getClient().getCreditCardNumber();
+            System.out.println("User: "+data.getClient().getName());
         }catch (NoClientLoggedExc exc){
             data.setClient(logIn());
         }
         show();
         int option = Scanner.getInt("Which option would you like to execute: ");
+        clearScreen();
 
         switch (option) {
             case 1:
@@ -39,6 +40,10 @@ public class ClientMenu extends Formulary {
                 new ClientMenu(data);
                 break;
             case 4:
+                if (data.getClient().getStatus()){
+                    System.out.println("You can't log off while travelling, please wait until the trip has finished.");
+                    new ClientMenu(data);
+                }
                 data.setClient(new NoClient());
                 System.out.println("LogOut successful");
                 new MainMenu(data);
@@ -59,7 +64,7 @@ public class ClientMenu extends Formulary {
     public Client logIn(){
         String name = Scanner.getString("Enter your name: ");
         long creditCardNumber = Scanner.getLong("Enter your credit card number: ");
-        Client client = new Client(0,creditCardNumber);
+        Client client = new Client(0,creditCardNumber,name);
         return client;
     }
 
@@ -105,7 +110,7 @@ public class ClientMenu extends Formulary {
     }
 
     public void displayContent(){
-        System.out.println("1.Driver");
+        System.out.println("1.Call Driver");
         System.out.println("2.Add Funds");
         System.out.println("3.Check Funds");
         System.out.println("4.LogOut");

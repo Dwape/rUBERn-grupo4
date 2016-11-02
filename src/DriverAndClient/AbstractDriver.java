@@ -51,4 +51,6 @@ public abstract class AbstractDriver {
     public abstract void resetFinishCoordinates ();
 
     public abstract double getBalance();
+
+    public abstract CreditCard getCreditCard();
 }

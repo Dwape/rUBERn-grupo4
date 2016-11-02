@@ -14,6 +14,7 @@ public class DriverMenu extends Formulary {
         this.data=data;
         show();
         int option = Scanner.getInt("Which option would you like to execute: ");
+        clearScreen();
 
         switch (option) {
             case 1:
@@ -29,7 +30,7 @@ public class DriverMenu extends Formulary {
                 new DriverMenu(data);
                 break;
             case 4:
-                System.out.println(data.getDriver().getBalance());
+                System.out.println("Your current balance is: "+data.getDriver().getBalance());
                 new DriverMenu(data);
             case 5:
                 new MainMenu(data);

@@ -16,6 +16,7 @@ public class rUBERnMenu extends Formulary {
     public rUBERnMenu (MainData data){
         show();
         int result = Scanner.getInt("Which option would you like to execute: ");
+        clearScreen();
 
         switch (result){
             case 1:

@@ -27,4 +27,8 @@ public class NoClient extends AbstractClient {   //todos los metodos iguales >> 
     public void changeStatus(){
         throw new NoClientLoggedExc();
     }
+
+    public String getName() {
+        throw new NoClientLoggedExc();
+    }
 }

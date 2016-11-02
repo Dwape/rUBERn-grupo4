@@ -2,10 +2,12 @@ package DriverAndClient;
 
 public abstract class AbstractClient  {
     CreditCard creditCard;
-    public boolean isTraveling;
+    protected String name;
+    protected boolean isTraveling;
 
-    public AbstractClient(double balance, long creditCardNumber) {
+    public AbstractClient(double balance, long creditCardNumber, String name) {
         creditCard = new CreditCard(balance,creditCardNumber);
+        this.name = name;
     }
 
     public AbstractClient(){}   //Doble constructor para inicializar DriverAndClient.NoClient sin inventar valores
@@ -21,4 +23,6 @@ public abstract class AbstractClient  {
     public abstract double getBalance();
 
     public abstract void changeStatus();
+
+    public abstract String getName();
 }

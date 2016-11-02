@@ -63,4 +63,8 @@ public class NoDriver extends AbstractDriver {
     public double getBalance(){
         throw new NoAvailableDriverExc();
     }
+
+    public CreditCard getCreditCard() {
+        throw  new NoAvailableDriverExc();
+    }
 }

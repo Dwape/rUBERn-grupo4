@@ -1,5 +1,7 @@
 package Menus;
 
+import Utility.Scanner;
+
 /**
  * Created by Dwape on 10/23/16.
  */
@@ -44,9 +46,7 @@ public abstract class Formulary {
         System.out.println("");
     }
 
-    public String getTitle(){
-        return this.title;
-    }
+    public abstract String getTitle();
 
     public abstract void displayContent();
 }

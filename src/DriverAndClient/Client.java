@@ -2,8 +2,8 @@ package DriverAndClient;
 
 public class Client extends AbstractClient {
 
-    public Client(double balance, long creditCardNumber) {
-        super(balance, creditCardNumber);
+    public Client(double balance, long creditCardNumber, String name) {
+        super(balance, creditCardNumber, name);
     }
 
     public void addFunds(double amount){
@@ -28,5 +28,9 @@ public class Client extends AbstractClient {
 
     public void changeStatus(){
         isTraveling = !isTraveling;
+    }
+
+    public String getName() {
+        return name;
     }
 }

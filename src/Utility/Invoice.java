@@ -21,10 +21,13 @@ public class Invoice {
             System.out.println(transactions.get(i).getTransactionIdentifier());
             System.out.println(transactions.get(i).getTransactionType());
             System.out.println(transactions.get(i).getDateString());
-            System.out.println(transactions.get(i).getCreditCardNumber());
+            System.out.println("Credit card: "+transactions.get(i).getCreditCardNumber());
             System.out.println(transactions.get(i).getTransactionDescription());
-            System.out.println(transactions.get(i).getTransactionAmount());
+            System.out.println("Transaction amount: "+transactions.get(i).getTransactionAmount());
             System.out.println("\n"+"***********************************************************"+"\n");
+            System.out.println("");
+            Scanner.getChar("Enter any character to continue: ");
+            System.out.println("");
         }
     }
 }
