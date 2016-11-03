@@ -18,15 +18,19 @@ public class Invoice {
 
     public void print(){
         for (int i =0; i<transactions.size(); i++){
-            System.out.println(transactions.get(i).getTransactionIdentifier());
-            System.out.println(transactions.get(i).getTransactionType());
-            System.out.println(transactions.get(i).getDateString());
-            System.out.println("Credit card: "+transactions.get(i).getCreditCardNumber());
-            System.out.println("Transaction amount: "+transactions.get(i).getTransactionAmount());
-            System.out.println("\n"+"***********************************************************"+"\n");
+            System.out.print(transactions.get(i).getTransactionIdentifier()+"\t");
+            System.out.print(transactions.get(i).getTransactionType()+"\t"+"\t");
+            System.out.print(transactions.get(i).getDateString()+"\t"+"\t");
+            System.out.print("Credit card: "+transactions.get(i).getCreditCardNumber()+"\t"+"\t");
+            System.out.print("Transaction amount: "+transactions.get(i).getTransactionAmount()+"\t"+"\t");
             System.out.println("");
-            Scanner.getChar("Enter any character to continue: ");
+            System.out.print("\n"+"*****************************************************************************************************************************"+"\n");
             System.out.println("");
+            if ((i+1)%3==0 ){
+                System.out.print("");
+                Scanner.getChar("Enter any character to continue: "+"\t");
+                System.out.print("");
+            }
         }
     }
 }
