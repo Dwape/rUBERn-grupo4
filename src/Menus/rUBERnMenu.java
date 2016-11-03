@@ -129,7 +129,7 @@ public class rUBERnMenu extends Formulary {
     public Category existingCategories(){
         ArrayList<Category> categories = data.getCategories();
         for (int i = 0; i < categories.size(); i++){
-            System.out.println(i + "." + categories.get(i).getCategoryName());
+            System.out.println(i+1 + "." + categories.get(i).getCategoryName());
         }
         int option = Scanner.getInt("Choose a category: ");
         if (option-1 > categories.size()) {
