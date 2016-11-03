@@ -25,6 +25,10 @@ public class rUBERn {
         rUBERnSystem.addDriver(driver1);
         rUBERnSystem.addDriver(driver2);
 
-        MainMenu mainMenu = new MainMenu(new MainData(new NoClient(),rUBERnSystem,invoice,new NoDriver()));
+        MainData data = new MainData(new NoClient(),rUBERnSystem,invoice,new NoDriver());
+        data.addCategory(standard);
+        data.addCategory(premium);
+
+        MainMenu mainMenu = new MainMenu(data);
     }
 }
