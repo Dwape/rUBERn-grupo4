@@ -92,4 +92,8 @@ public class Driver extends AbstractDriver {
     public CreditCard getCreditCard() {
         return creditCard;
     }
+
+    public String getStatus(){
+        return stateDriver.getStatus();
+    }
 }

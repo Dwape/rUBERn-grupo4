@@ -67,4 +67,8 @@ public class NoDriver extends AbstractDriver {
     public CreditCard getCreditCard() {
         throw  new NoAvailableDriverExc();
     }
+
+    public String getStatus(){
+        throw new NoAvailableDriverExc();
+    }
 }

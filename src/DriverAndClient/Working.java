@@ -7,6 +7,7 @@ import Exceptions.DriverAlreadyWorkingExc;
 public class Working extends StateDriver {
     public Working(AbstractDriver driver){
         super(driver);
+        stateName = "Working";
     }
 
     public void goOnline(){

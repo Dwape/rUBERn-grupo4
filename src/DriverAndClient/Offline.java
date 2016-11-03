@@ -9,6 +9,7 @@ import Exceptions.DriverNotWorkingExc;
 public class Offline extends StateDriver {
     public Offline(AbstractDriver driver){
         super(driver);
+        stateName = "Offline";
     }
     public void goOnline(){
         driver.setState(new Online(driver));

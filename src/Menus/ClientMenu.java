@@ -13,9 +13,10 @@ import Utility.Scanner;
 public class ClientMenu extends Formulary {
 
     private String title = "Client Menu";
+    MainData data;
 
     public ClientMenu(MainData data){
-
+        this.data=data;
         try{
             System.out.println("User: "+data.getClient().getName());
         }catch (NoClientLoggedExc exc){

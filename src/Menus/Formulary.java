@@ -15,31 +15,14 @@ public abstract class Formulary {
         this.displayContent();
     }
 
-    public void clearScreen(){  //fijarse como se hace para limpiar la consola
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
+    public void clearScreen(){
+        for(int i=0;i<20;i++){
+            System.out.println();
+        }
     }
 
     public void displayTitle(){
-        System.out.println("**************** " + this.getTitle() + " ****************");
+        System.out.println("\n**************** " + this.getTitle() + " ****************");
     }
 
     public void drawLine(){

@@ -53,4 +53,6 @@ public abstract class AbstractDriver {
     public abstract double getBalance();
 
     public abstract CreditCard getCreditCard();
+
+    public abstract String getStatus();
 }

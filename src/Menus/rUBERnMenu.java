@@ -5,15 +5,20 @@ import Categories.Category;
 import Categories.Premium;
 import Categories.Standard;
 import DriverAndClient.Car;
+import DriverAndClient.Client;
 import DriverAndClient.Coordinates;
 import DriverAndClient.Driver;
 import Utility.Scanner;
 
+import java.util.ArrayList;
+
 public class rUBERnMenu extends Formulary {
 
+    MainData data;
     private String title = "rUBERn Menu";
 
     public rUBERnMenu (MainData data){
+        this.data=data;
         show();
         int result = Scanner.getInt("Which option would you like to execute: ");
         clearScreen();
@@ -28,9 +33,13 @@ public class rUBERnMenu extends Formulary {
                 new rUBERnMenu(data);
                 break;
             case 3:
-                new MainMenu(data);
+                showUsers();
+                new rUBERnMenu(data);
                 break;
             case 4:
+                new MainMenu(data);
+                break;
+            case 5:
                 System.exit(0);
                 break;
         }
@@ -77,30 +86,21 @@ public class rUBERnMenu extends Formulary {
         return new Driver(car,name, creditCard);
     }
 
-   /* private DriverAndClient.Schedule createSchedule() {
-        DriverAndClient.Schedule schedule = new DriverAndClient.Schedule();
-        String[] daysOfTheWeek = new String[7];
-        daysOfTheWeek[0] = "monday";
-        daysOfTheWeek[1] = "tuesday";
-        daysOfTheWeek[2] = "wednesday";
-        daysOfTheWeek[3] = "thursday";
-        daysOfTheWeek[4] = "friday";
-        daysOfTheWeek[5] = "saturday";
-        daysOfTheWeek[6] = "sunday";
-        int i = 0;
-        System.out.println("Please enter your working hours");
-        while (i < 7) {
-            try {
-                String iDay = Utility.Scanner.getString("Enter your starting hour on " + daysOfTheWeek[i] + " (HH:mm): ");
-                String fDay = Utility.Scanner.getString("Enter your finish hour on " + daysOfTheWeek[i] + " (HH:mm): ");
-                schedule.setHoursPerDay(iDay, fDay, daysOfTheWeek[i]);
-                i++;
-            } catch (IllegalArgumentException exc) {
-                System.out.println("Please enter the time in the following format (HH:mm)");
-            }
+    private void showUsers(){
+        ArrayList<Driver> driverList = data.getrUBERnSystem().getDriverList();
+        System.out.println("Clients: ");
+        String status;
+        if(data.getClient().getStatus())
+            status = "Travelling";
+        else
+            status="Not travelling";
+        System.out.println(data.getClient().getName() + "------" + status);
+
+        System.out.println("\nDrivers: ");
+        for(int i=0;i<driverList.size();i++){
+            System.out.println(driverList.get(i).getName() + "------" + driverList.get(i).getStatus());
         }
-        return schedule;
-    }*/
+    }
 
     public String getTitle(){
         return title;
@@ -109,7 +109,8 @@ public class rUBERnMenu extends Formulary {
     public void displayContent(){
         System.out.println("1.Register Driver");
         System.out.println("2.Print Invoice");
-        System.out.println("3.Back");
-        System.out.println("4.Exit");
+        System.out.println("3.Show current users");
+        System.out.println("4.Back");
+        System.out.println("5.Exit");
     }
 }

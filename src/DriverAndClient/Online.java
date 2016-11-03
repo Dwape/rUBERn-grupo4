@@ -8,6 +8,7 @@ import Exceptions.DriverNotWorkingExc;
 public class Online extends StateDriver {
     public Online(AbstractDriver driver){
         super(driver);
+        stateName = "Online";
     }
 
     public void goOnline(){
