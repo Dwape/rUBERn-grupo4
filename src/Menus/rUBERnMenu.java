@@ -71,6 +71,10 @@ public class rUBERnMenu extends Formulary {
             switch (numberCategory) {
                 case 1:
                     String name = Scanner.getString("Enter category name: ");
+                    if (checkExistingCategories(name)){
+                        System.out.println("Category name already used");
+                        configureCategory();
+                    }
                     double percentageCost = Scanner.getDouble("Enter extra percentage cost: ");
                     Category newCategory = new Category(name, percentageCost);
                     data.addCategory(newCategory);
@@ -79,6 +83,10 @@ public class rUBERnMenu extends Formulary {
                     Category modifiedCategory = existingCategories();
                     data.getCategories().remove(modifiedCategory);
                     String newName = Scanner.getString("Enter new category name: ");
+                    if (checkExistingCategories(newName)){
+                        System.out.println("Category name already used");
+                        configureCategory();
+                    }
                     double newPercentageCost = Scanner.getDouble("Enter new extra percentage cost: ");
                     modifiedCategory.setName(newName);
                     modifiedCategory.setPercentageCost(newPercentageCost);
@@ -137,5 +145,15 @@ public class rUBERnMenu extends Formulary {
             existingCategories();
         }
             return categories.get(option-1);
+    }
+
+    public boolean checkExistingCategories(String categoryName){
+        ArrayList<Category> categories = data.getCategories();
+        for (int i = 0; i < categories.size(); i++){
+            if (categories.get(i).getCategoryName().equals(categoryName)){
+                return true;
+            }
+        }
+        return false;
     }
 }
