@@ -1,8 +1,8 @@
-import Categories.Basic;
 import DriverAndClient.Car;
 import DriverAndClient.Coordinates;
 import DriverAndClient.Driver;
 import Exceptions.NoAvailableDriverExc;
+import Utility.Category;
 import Utility.MainSystem;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
@@ -11,7 +11,7 @@ public class ChooseDriverTest {
 
     @Test
     public void evaluateChooseDriver(){
-        Basic basic = new Basic();
+        Category basic = new Category("basic", 10);
 
         Coordinates coord1 = new Coordinates(5, 3);
         Coordinates coord2 = new Coordinates(6, 8);
@@ -45,7 +45,7 @@ public class ChooseDriverTest {
     @Test (expected= NoAvailableDriverExc.class)
     public void evaluateNoAvailableDriverExc(){
 
-        Basic basic = new Basic();
+        Category basic = new Category("basic", 10);
 
         Coordinates coord1 = new Coordinates(5, 3);
         Coordinates coord2 = new Coordinates(6, 8);

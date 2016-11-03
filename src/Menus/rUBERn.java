@@ -1,11 +1,9 @@
 package Menus;
 
-import Categories.Premium;
-import Categories.Standard;
 import DriverAndClient.*;
-import Menus.MainMenu;
 import Utility.Invoice;
 import Utility.MainSystem;
+import Utility.Category;
 
 /**
  * Created by Gianni on 10/10/2016.
@@ -15,8 +13,8 @@ public class rUBERn {
         MainSystem rUBERnSystem = new MainSystem();
         Invoice invoice = new Invoice();
 
-        Standard standard = new Standard();
-        Premium premium = new Premium();
+        Category standard = new Category("standard", 5);
+        Category premium = new Category("premium", 0);
         Coordinates coordinates1 = new Coordinates(1, 1);
         Coordinates coordinates2 = new Coordinates(2, 2);
         Car car1 = new Car(4, standard, coordinates1);

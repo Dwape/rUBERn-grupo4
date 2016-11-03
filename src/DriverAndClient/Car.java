@@ -1,6 +1,6 @@
 package DriverAndClient;
 
-import Categories.Category;
+import Utility.Category;
 
 /**
  * Created by Gianni on 10/9/2016.

@@ -3,6 +3,7 @@ package Menus;
 import DriverAndClient.*;
 import Utility.Invoice;
 import Utility.MainSystem;
+import Utility.Category;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ public class MainData {
     AbstractDriver driver;
     Coordinates startCoordinates;
     Coordinates finishCoordinates;
+    ArrayList<Category> categories = new ArrayList<>();
 
     public MainData(AbstractClient client, MainSystem rUBERnSystem, Invoice invoice, AbstractDriver driver) {
         this.client = client;
@@ -44,6 +46,9 @@ public class MainData {
     public AbstractDriver getDriver() {
         return driver;
     }
+    public ArrayList getCategories(){
+        return categories;
+    }
 
     public void setStartCoordinates(Coordinates startCoordinates) {
         this.startCoordinates = startCoordinates;
@@ -62,5 +67,8 @@ public class MainData {
     }
     public void setDriver(Driver driver) {
         this.driver = driver;
+    }
+    public void addCategory(Category newCategory){
+        categories.add(newCategory);
     }
 }

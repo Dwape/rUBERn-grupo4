@@ -1,9 +1,9 @@
-import Categories.Basic;
 import DriverAndClient.Car;
 import DriverAndClient.Coordinates;
 import DriverAndClient.Driver;
 import Exceptions.CanNotWorkWhileOfflineExc;
 import Exceptions.DriverAlreadyOnlineExc;
+import Utility.Category;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
@@ -12,7 +12,7 @@ public class StateDriverTest {
     @Test (expected= DriverAlreadyOnlineExc.class)
     public void evaluateGoOnline(){
 
-        Basic basic = new Basic();
+        Category basic = new Category("basic", 10);
 
         Coordinates coord1 = new Coordinates(5, 3);
         Car car1 = new Car(3, basic, coord1);
@@ -33,7 +33,7 @@ public class StateDriverTest {
     @Test (expected= CanNotWorkWhileOfflineExc.class)
     public void evaluateStateDriver(){
 
-        Basic basic = new Basic();
+        Category basic = new Category("basic", 10);
 
         Coordinates coord1 = new Coordinates(5, 3);
         Car car1 = new Car(3, basic, coord1);

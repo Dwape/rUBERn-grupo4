@@ -13,7 +13,6 @@ public class Transaction {
     private String transactionType;
     private String dateString;
     private long creditCardNumber;
-    private String transactionDescription;
     private double transactionAmount;
 
     private DateTime date;
@@ -22,7 +21,6 @@ public class Transaction {
         transactionIdentifier = identifier;
         transactionType = type;
         creditCardNumber = cardNumber;
-        transactionDescription = description;
         transactionAmount = amount;
 
         date = date.now();
@@ -44,10 +42,6 @@ public class Transaction {
 
     public long getCreditCardNumber(){
         return creditCardNumber;
-    }
-
-    public String getTransactionDescription(){
-        return transactionDescription;
     }
 
     public double getTransactionAmount(){

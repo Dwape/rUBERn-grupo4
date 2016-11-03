@@ -1,7 +1,7 @@
-import Categories.Basic;
 import DriverAndClient.Car;
 import DriverAndClient.Coordinates;
 import DriverAndClient.Driver;
+import Utility.Category;
 import Utility.MainSystem;
 import org.junit.Test;
 
@@ -12,7 +12,7 @@ public class DriverTest {
     @Test
     public void evaluateCheckAvailability(){
 
-        Basic basic = new Basic();
+        Category basic = new Category("basic", 10);
 
         Coordinates coord1 = new Coordinates(5, 3);
         Car car1 = new Car(3, basic, coord1);

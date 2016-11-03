@@ -1,11 +1,7 @@
 package Menus;
 
-import Categories.Basic;
-import Categories.Category;
-import Categories.Premium;
-import Categories.Standard;
+import Utility.Category;
 import DriverAndClient.Car;
-import DriverAndClient.Client;
 import DriverAndClient.Coordinates;
 import DriverAndClient.Driver;
 import Utility.Scanner;
@@ -37,9 +33,13 @@ public class rUBERnMenu extends Formulary {
                 new rUBERnMenu(data);
                 break;
             case 4:
-                new MainMenu(data);
+                configureCategory();
+                new rUBERnMenu(data);
                 break;
             case 5:
+                new MainMenu(data);
+                break;
+            case 6:
                 System.exit(0);
                 break;
         }
@@ -48,32 +48,7 @@ public class rUBERnMenu extends Formulary {
     private Driver createDriver(){
         String name = Scanner.getString("Please enter your name: ");
 
-        boolean loop = true;
-        Category category;
-        category = new Premium();
-        while (loop) {
-            System.out.println("1.Premium");
-            System.out.println("2.Standard");
-            System.out.println("3.Basic");
-            int numberCategory = Scanner.getInt("Choose a category for your car: ");
-            switch (numberCategory) {
-                case 1:
-                    category = new Premium();
-                    loop = false;
-                    break;
-                case 2:
-                    category = new Standard();
-                    loop = false;
-                    break;
-                case 3:
-                    category = new Basic();
-                    loop = false;
-                    break;
-                default:
-                    System.out.println("Not a valid option");
-                    break;
-            }
-        }
+        Category category = existingCategories();
         int spaceCar = Scanner.getInt("Car capacity for passenger: ");
         System.out.println("Please enter your coordinates");
         long coordinateX = Scanner.getLong("Enter your X coordinate: ");
@@ -84,6 +59,42 @@ public class rUBERnMenu extends Formulary {
         Car car = new Car(spaceCar,category,coordinates);
         System.out.println("Driver registered successfully");
         return new Driver(car,name, creditCard);
+    }
+
+    private void configureCategory(){
+        ArrayList<Category> categories = data.getCategories();
+            System.out.println("1.Create new category");
+            System.out.println("2.Modify existing category");
+            System.out.println("3.Delete existing category");
+            System.out.println("4.Back");
+            int numberCategory = Scanner.getInt("Choose a category for your car: ");
+            switch (numberCategory) {
+                case 1:
+                    String name = Scanner.getString("Enter category name: ");
+                    double percentageCost = Scanner.getDouble("Enter extra percentage cost: ");
+                    Category newCategory = new Category(name, percentageCost);
+                    data.addCategory(newCategory);
+                    break;
+                case 2:
+                    Category modifiedCategory = existingCategories();
+                    data.getCategories().remove(modifiedCategory);
+                    String newName = Scanner.getString("Enter new category name: ");
+                    double newPercentageCost = Scanner.getDouble("Enter new extra percentage cost: ");
+                    modifiedCategory.setName(newName);
+                    modifiedCategory.setPercentageCost(newPercentageCost);
+                    data.addCategory(modifiedCategory);
+                    break;
+                case 3:
+                    Category removeCategory = existingCategories();
+                    data.getCategories().remove(removeCategory);
+                    break;
+                case 4:
+                    new MainMenu(data);
+                    break;
+                default:
+                    System.out.println("Not a valid option");
+                    break;
+        }
     }
 
     private void showUsers(){
@@ -110,7 +121,21 @@ public class rUBERnMenu extends Formulary {
         System.out.println("1.Register Driver");
         System.out.println("2.Print Invoice");
         System.out.println("3.Show current users");
-        System.out.println("4.Back");
-        System.out.println("5.Exit");
+        System.out.println("4.Configure Categories");
+        System.out.println("5.Back");
+        System.out.println("6.Exit");
+    }
+
+    public Category existingCategories(){
+        ArrayList<Category> categories = data.getCategories();
+        for (int i = 0; i < categories.size(); i++){
+            System.out.println(i + "." + categories.get(i).getCategoryName());
+        }
+        int option = Scanner.getInt("Choose a category: ");
+        if (option-1 > categories.size()) {
+            System.out.println("Invalid Option");
+            existingCategories();
+        }
+            return categories.get(option-1);
     }
 }
