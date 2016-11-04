@@ -1,5 +1,6 @@
 package Menus;
 
+import Exceptions.NoClientLoggedExc;
 import Utility.Category;
 import DriverAndClient.Car;
 import DriverAndClient.Coordinates;
@@ -113,12 +114,15 @@ public class rUBERnMenu extends Formulary {
         ArrayList<Driver> driverList = data.getrUBERnSystem().getDriverList();
         System.out.println("Clients: ");
         String status;
-        if(data.getClient().getStatus())
-            status = "Travelling";
-        else
-            status="Not travelling";
-        System.out.println(data.getClient().getName() + "------" + status);
-
+        try {
+            if (data.getClient().getStatus())
+                status = "Travelling";
+            else
+                status = "Not travelling";
+            System.out.println(data.getClient().getName() + "------" + status);
+        }catch (NoClientLoggedExc t){
+            System.out.println("No client logged");
+        }
         System.out.println("\nDrivers: ");
         for(int i=0;i<driverList.size();i++){
             System.out.println(driverList.get(i).getName() + "------" + driverList.get(i).getStatus());
