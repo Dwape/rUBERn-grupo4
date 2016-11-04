@@ -30,7 +30,7 @@ public class StateDriverTest {
         driver1.goOnline();
     }
 
-    @Test (expected= CanNotWorkWhileOfflineExc.class)
+    @Test
     public void evaluateStateDriver(){
 
         Category basic = new Category("basic", 10);
@@ -41,22 +41,12 @@ public class StateDriverTest {
         Driver driver1 = new Driver(car1, "Pedro", 27432123);
 
         driver1.goOnline();
-
+        
         driver1.goToWork();
 
         boolean available = driver1.getAvailability();
         assertEquals(false, available);
 
-        driver1.stopWorking();
 
-        available = driver1.getAvailability();
-        assertEquals(true, available);
-
-        driver1.goOffline();
-
-        available = driver1.getAvailability();
-        assertEquals(false, available);
-
-        driver1.goToWork();
     }
 }
