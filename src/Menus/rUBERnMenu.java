@@ -50,6 +50,10 @@ public class rUBERnMenu extends Formulary {
 
         Category category = existingCategories();
         int spaceCar = Scanner.getInt("Car capacity for passenger: ");
+        if (spaceCar<=0){
+            System.out.println("Car capacity can't be negative or cero");
+            createDriver();
+        }
         System.out.println("Please enter your coordinates");
         long coordinateX = Scanner.getLong("Enter your X coordinate: ");
         long coordinateY = Scanner.getLong("Enter your y coordinate: ");

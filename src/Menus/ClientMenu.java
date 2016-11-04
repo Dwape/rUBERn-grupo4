@@ -74,6 +74,11 @@ public class ClientMenu extends Formulary {
             System.out.println("Already travelling");
             new ClientMenu(data);
         }
+        int numberOfPeople = Scanner.getInt("How many people will travel? ");
+        if (numberOfPeople <= 0){
+            System.out.println("Amount of people can't be negative or cero");
+            callDriver(data);
+        }
         long StartX = Scanner.getLong("Enter current X coordinates: ");
         long StartY = Scanner.getLong("Enter current Y coordinates: ");
         Coordinates start = new Coordinates(StartX, StartY);
@@ -81,8 +86,6 @@ public class ClientMenu extends Formulary {
         long FinishX = Scanner.getLong("Enter destiny's X coordinate: ");
         long FinishY = Scanner.getLong("Enter destiny's Y coordinate: ");
         Coordinates finish = new Coordinates(FinishX, FinishY);
-
-        int numberOfPeople = Scanner.getInt("How many people will travel? ");
 
         double price = data.getrUBERnSystem().calculateCost(start, finish);
         if (price > data.getClient().getBalance()){
